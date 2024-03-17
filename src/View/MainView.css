@@ -1,0 +1,15 @@
+.backgroundColor {
+    -fx-background-color: linear-gradient(#383838,#2d2d2d);
+}
+
+.UIButton {
+	-fx-background-color: transparent;
+}
+
+.UIButton:hover {
+	-fx-cursor: hand;
+}
+
+.UIButton:hover .UIIcon {
+    -fx-opacity: 0.75;
+}
