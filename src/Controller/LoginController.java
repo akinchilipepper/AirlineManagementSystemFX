@@ -15,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -117,11 +119,18 @@ public class LoginController implements Initializable {
     }
 
     public void error() {
+    	txtUsername.setUnFocusColor(Color.RED);
+        txtPassword.setUnFocusColor(Color.RED);
         deneme--;
         denemeLabel.setText(deneme + " Hakkınız Kaldı");
         denemeLabel.setVisible(true);
         if(deneme == 0) {
         	mainPane.getScene().getWindow().hide();
+        	Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Bilgilendirme");
+            alert.setHeaderText(null);
+            alert.setContentText("Deneme hakkınız kalmadı\nSistemden çıkılıyor...");
+            alert.show();
         }
     }
     

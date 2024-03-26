@@ -7,9 +7,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainViewController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainViewController">
+   <left>
+      <AnchorPane prefHeight="565.0" prefWidth="350.0" styleClass="backgroundColor" stylesheets="@MainView.css" BorderPane.alignment="CENTER" />
+   </left>
    <top>
-      <AnchorPane fx:id="topBar" prefHeight="35.0" prefWidth="1000.0" style="-fx-background-color: #262626;">
+      <AnchorPane fx:id="topBar" prefHeight="35.0" prefWidth="1000.0" style="-fx-background-color: #262626;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="closeButton" layoutX="960.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#onCloseButtonClicked" styleClass="UIButton" stylesheets="@MainView.css">
                <graphic>
@@ -20,12 +23,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label layoutX="431.0" layoutY="9.0" styleClass="title" stylesheets="@MainView.css" text="Havayolu Yönetim Sistemi" textFill="WHITE">
-            </Label>
+            <Label layoutX="431.0" layoutY="9.0" styleClass="title" stylesheets="@MainView.css" text="Havayolu Yönetim Sistemi" textFill="WHITE" />
          </children>
       </AnchorPane>
    </top>
-   <left>
-      <AnchorPane prefHeight="600.0" prefWidth="350.0" styleClass="backgroundColor" stylesheets="@MainView.css" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>
