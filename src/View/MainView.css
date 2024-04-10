@@ -13,3 +13,7 @@
 .UIButton:hover .UIIcon {
     -fx-opacity: 0.75;
 }
+
+.navbutton {
+	-fx-background-color: black;
+}

@@ -55,7 +55,7 @@ public class LoginController implements Initializable {
     	clock();
     }
 
-    public void onConfirmButtonClicked() {
+    public void onConfirmButtonAction() {
         try {
         	if(txtUsername.getText().equals("") && txtPassword.getText().equals("")) {
         		txtUsername.setUnFocusColor(Color.RED);

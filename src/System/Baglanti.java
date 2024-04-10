@@ -52,20 +52,20 @@ public class Baglanti {
 
 	
 	public void ucuslariGoster() {
-		String sorgu = "SELECT \r\n"
-				+ "    U.MODEL, \r\n"
-				+ "    H1.H_ADI AS KALKIS, \r\n"
-				+ "    H2.H_ADI AS VARIS, \r\n"
-				+ "    UC.KZAMANI, \r\n"
-				+ "    UC.VZAMANI \r\n"
-				+ "FROM \r\n"
-				+ "    UCUSLAR UC\r\n"
-				+ "JOIN \r\n"
-				+ "    havaalanlari H1 ON H1.ID = UC.KALKISYERID\r\n"
-				+ "JOIN \r\n"
-				+ "    havaalanlari H2 ON H2.ID = UC.VARISYERID\r\n"
-				+ "JOIN \r\n"
-				+ "	   ucaklar U ON U.ID = UC.UÇAKID;";
+		String sorgu = "SELECT"
+				+ "    U.MODEL,"
+				+ "    H1.H_ADI AS KALKIS,"
+				+ "    H2.H_ADI AS VARIS,"
+				+ "    UC.KZAMANI,"
+				+ "    UC.VZAMANI"
+				+ "FROM"
+				+ "    UCUSLAR UC"
+				+ "JOIN"
+				+ "    havaalanlari H1 ON H1.ID = UC.KALKISYERID"
+				+ "JOIN"
+				+ "    havaalanlari H2 ON H2.ID = UC.VARISYERIDn"
+				+ "JOIN"
+				+ "	   ucaklar U ON U.ID = UC.UÇAKID";
 		try {
 			st = con.createStatement();
 			ResultSet rs = st.executeQuery(sorgu);
