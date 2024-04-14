@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -46,11 +46,11 @@ public class LoginController implements Initializable {
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-    	Image flaaiImg = new Image("/Images/flaai.png");
+    	Image flaaiImg = new Image("/images/flaai.png");
     	flaaiImgView.setImage(flaaiImg);
-    	Image planeImg = new Image("/Images/plane.png");
+    	Image planeImg = new Image("/images/plane.png");
     	planeImgView.setImage(planeImg);
-    	Image closeImg = new Image("/Images/cross.png");
+    	Image closeImg = new Image("/images/blackcross.png");
     	closeImgView.setImage(closeImg);
     	clock();
     }
@@ -85,7 +85,7 @@ public class LoginController implements Initializable {
                 error();
         	}else if (txtUsername.getText().equals("admin") && txtPassword.getText().equals("admin")) {
         		Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/View/MainView.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
                 AnchorPane topBar = (AnchorPane) root.lookup("#topBar");
                 topBar.setOnMousePressed(event -> {
                     xOffset = event.getSceneX();

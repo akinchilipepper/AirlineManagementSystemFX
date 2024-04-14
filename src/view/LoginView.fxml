@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="backgroundColor" stylesheets="@LoginDesign.css">
          <children>
@@ -50,7 +50,7 @@
                <graphic>
                   <ImageView fx:id="closeImgView" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="UIIcon">
                      <image>
-                        <Image url="@../Images/cross.png" />
+                        <Image url="@../Images/blackcross.png" />
                      </image></ImageView>
                </graphic>
             </Button>
