@@ -1,6 +1,6 @@
 package model;
 
-public class User {
+public class Passenger {
 
     private int id;
     private String ad;
@@ -11,7 +11,7 @@ public class User {
     private String dogumtarihi;
     private String parola;
 
-    public User(int id, String ad, String soyad, String telno, String e_posta, String cinsiyet, String dogumtarihi, String parola) {
+    public Passenger(int id, String ad, String soyad, String telno, String e_posta, String cinsiyet, String dogumtarihi, String parola) {
         this.ad = ad;
         this.soyad = soyad;
         this.telno = telno;
@@ -22,7 +22,7 @@ public class User {
         this.id = id;
     }
 
-    public User() {
+    public Passenger() {
 
     }
 

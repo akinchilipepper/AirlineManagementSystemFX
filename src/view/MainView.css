@@ -17,3 +17,12 @@
 .navbutton {
 	-fx-background-color: black;
 }
+
+.white-bg {
+	-fx-background-color: #fff;
+	-fx-background-radius: 5px;
+}
+
+.shadow {
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5,0,0,0);
+}

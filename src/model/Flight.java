@@ -3,7 +3,6 @@ package model;
 public class Flight {
 
     int id;
-    String hat;
     String ucak;
     String kalkisyeri;
     String varisyeri;
@@ -14,11 +13,10 @@ public class Flight {
     String durum;
     String ucusNo;
 
-    public Flight(int id, String hat, String ucak, String kalkisyeri, String varisyeri, String kalkisTarihi,
+    public Flight(int id, String ucak, String kalkisyeri, String varisyeri, String kalkisTarihi,
             String varisTarihi, String kalkisZamani, String varisZamani, String durum, String ucusNo) {
         super();
         this.id = id;
-        this.hat = hat;
         this.ucak = ucak;
         this.kalkisyeri = kalkisyeri;
         this.varisyeri = varisyeri;
@@ -40,14 +38,6 @@ public class Flight {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getHat() {
-        return hat;
-    }
-
-    public void setHat(String hat) {
-        this.hat = hat;
     }
 
     public String getUcak() {
