@@ -3,9 +3,9 @@ package model;
 public class Flight {
 
     int id;
-    String ucak;
-    String kalkisyeri;
-    String varisyeri;
+    Plane ucak;
+    Airport kalkisyeri;
+    Airport varisyeri;
     String kalkisTarihi;
     String varisTarihi;
     String kalkisZamani;
@@ -13,7 +13,7 @@ public class Flight {
     String durum;
     String ucusNo;
 
-    public Flight(int id, String ucak, String kalkisyeri, String varisyeri, String kalkisTarihi,
+    public Flight(int id, Plane ucak, Airport kalkisyeri, Airport varisyeri, String kalkisTarihi,
             String varisTarihi, String kalkisZamani, String varisZamani, String durum, String ucusNo) {
         super();
         this.id = id;
@@ -40,27 +40,27 @@ public class Flight {
         this.id = id;
     }
 
-    public String getUcak() {
+    public Plane getUcak() {
         return ucak;
     }
 
-    public void setUcak(String ucak) {
+    public void setUcak(Plane ucak) {
         this.ucak = ucak;
     }
 
-    public String getKalkisyeri() {
+    public Airport getKalkisyeri() {
         return kalkisyeri;
     }
 
-    public void setKalkisyeri(String kalkisyeri) {
+    public void setKalkisyeri(Airport kalkisyeri) {
         this.kalkisyeri = kalkisyeri;
     }
 
-    public String getVarisyeri() {
+    public Airport getVarisyeri() {
         return varisyeri;
     }
 
-    public void setVarisyeri(String varisyeri) {
+    public void setVarisyeri(Airport varisyeri) {
         this.varisyeri = varisyeri;
     }
 

@@ -6,7 +6,6 @@ public class Plane {
 	private int kapasite;
 	
 	public Plane(int id, String model, int kapasite) {
-		super();
 		this.id = id;
 		this.model = model;
 		this.kapasite = kapasite;

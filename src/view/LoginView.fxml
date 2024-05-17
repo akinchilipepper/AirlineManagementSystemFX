@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginViewController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="backgroundColor" stylesheets="@LoginDesign.css">
          <children>
@@ -34,7 +34,6 @@
             </JFXButton>
             <FontAwesomeIconView fx:id="pswIcon" glyphName="LOCK" layoutX="42.0" layoutY="346.0" size="18" />
             <MaterialIconView fx:id="userIcon" glyphName="PERSON" layoutX="39.0" layoutY="294.0" size="18" />
-            <Label fx:id="pswLabel" layoutX="337.0" layoutY="363.0" prefHeight="18.0" prefWidth="97.0" styleClass="resetLabel" stylesheets="@LoginDesign.css" text="Parolamı Unuttum" />
             <Label fx:id="denemeLabel" alignment="CENTER" layoutX="156.0" layoutY="508.0" prefHeight="18.0" prefWidth="186.0" visible="false">
                <font>
                   <Font size="14.0" />
@@ -59,7 +58,6 @@
                   <Image url="@../Images/flaai.png" />
                </image>
             </ImageView>
-            <Label layoutX="211.0" layoutY="567.0" prefHeight="18.0" prefWidth="76.0" text="Hesap Oluştur" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

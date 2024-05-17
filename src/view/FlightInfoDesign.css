@@ -1,0 +1,8 @@
+.vBox{
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-border-radius: 5px;
+}
+.page{
+	-fx-background-color: linear-gradient(to left bottom, #383838, #505050, #696969, #848383, #a09e9e, #b1afaf, #c2c0c0, #d4d2d2, #dfdddd, #e9e8e9, #f4f4f4, #ffffff);
+}

@@ -92,17 +92,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <JFXButton layoutX="637.0" layoutY="97.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: BLACK;" text="EKLE" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton layoutX="637.0" layoutY="42.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: BLACK;" text="SİL" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton layoutX="637.0" layoutY="152.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: BLACK;" text="GÜNCELLE" textFill="WHITE">
+                        <JFXButton fx:id="addFlightButton" layoutX="637.0" layoutY="131.0" onAction="#addFlight" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: BLACK;" text="EKLE" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -111,21 +101,23 @@
                         <Label layoutX="15.0" layoutY="30.0" text="KALKIŞ YERİ" />
                         <Label layoutX="15.0" layoutY="70.0" text="KALKIŞ TARİHİ" />
                         <Line endX="-100.00004577636719" endY="-230.2000274658203" layoutX="719.0" layoutY="240.0" startX="-100.0001220703125" startY="-26.200027465820312" />
-                        <ComboBox layoutX="14.0" layoutY="182.0" prefWidth="150.0" />
-                        <ComboBox layoutX="234.0" layoutY="180.0" prefWidth="150.0" />
+                        <ComboBox fx:id="planeBox" layoutX="14.0" layoutY="182.0" prefWidth="150.0" />
+                        <ComboBox fx:id="statusBox" layoutX="234.0" layoutY="180.0" prefWidth="150.0" />
                         <Label layoutX="15.0" layoutY="157.0" text="UÇAK SEÇİMİ" />
                         <Label layoutX="234.0" layoutY="156.0" text="UÇUŞ DURUMU" />
-                        <TextField layoutX="445.0" layoutY="181.0" />
+                        <TextField fx:id="flightNumberField" layoutX="445.0" layoutY="181.0" />
                         <Label layoutX="445.0" layoutY="157.0" text="UÇUŞ NO" />
                         <Label layoutX="15.0" layoutY="110.0" text="KALKIŞ ZAMANI" />
-                        <DatePicker layoutX="109.0" layoutY="65.0" prefHeight="26.0" prefWidth="180.0" />
-                        <TextField layoutX="110.0" layoutY="105.0" prefWidth="180.0" />
+                        <DatePicker fx:id="departureDatePicker" layoutX="109.0" layoutY="65.0" prefHeight="26.0" prefWidth="180.0" />
+                        <TextField fx:id="departureTimeField" layoutX="110.0" layoutY="105.0" prefWidth="180.0" />
                         <ComboBox fx:id="arrivalBox" layoutX="416.0" layoutY="25.0" prefWidth="180.0" />
-                        <Label layoutX="321.0" layoutY="30.0" text="KALKIŞ YERİ" />
-                        <Label layoutX="321.0" layoutY="70.0" text="KALKIŞ TARİHİ" />
-                        <Label layoutX="321.0" layoutY="110.0" text="KALKIŞ ZAMANI" />
-                        <DatePicker layoutX="415.0" layoutY="65.0" prefHeight="26.0" prefWidth="180.0" />
-                        <TextField layoutX="416.0" layoutY="105.0" prefWidth="180.0" />
+                        <Label layoutX="321.0" layoutY="30.0" text="VARIŞ YERİ" />
+                        <Label layoutX="321.0" layoutY="70.0" text="VARIŞ TARİHİ" />
+                        <Label layoutX="321.0" layoutY="110.0" text="VARIŞ ZAMANI" />
+                        <DatePicker fx:id="arrivalDatePicker" layoutX="415.0" layoutY="65.0" prefHeight="26.0" prefWidth="180.0" />
+                        <TextField fx:id="arrivalTimeField" layoutX="416.0" layoutY="105.0" prefWidth="180.0" />
+                        <TextField fx:id="ticketPriceField" layoutX="638.0" layoutY="75.0" />
+                        <Label layoutX="680.0" layoutY="51.0" text="BİLET FİYATI" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="12.0" layoutY="248.0" prefHeight="358.0" prefWidth="800.0" stylesheets="@MainView.css">
@@ -136,15 +128,13 @@
                      <children>
                         <TableView fx:id="flightsTable" layoutX="11.0" layoutY="55.0" prefHeight="295.0" prefWidth="778.0">
                           <columns>
-                            <TableColumn fx:id="table_column_departure" prefWidth="125.0" text="KALKIŞ" />
-                            <TableColumn fx:id="table_column_arrival" prefWidth="125.0" text="VARIŞ" />
-                              <TableColumn fx:id="table_column_departureDate" prefWidth="70.0" text="K-TARİHİ" />
-                              <TableColumn fx:id="table_column_arrivalDate" prefWidth="70.0" text="V-TARİHİ" />
-                              <TableColumn fx:id="table_column_departureTime" prefWidth="70.0" text="K-ZAMANI" />
-                              <TableColumn fx:id="table_column_arrivalTime" minWidth="0.0" prefWidth="70.0" text="V-ZAMANI" />
-                              <TableColumn fx:id="table_column_plane" minWidth="0.0" prefWidth="90.0" text="UÇAK" />
-                              <TableColumn fx:id="table_column_flightNumber" prefWidth="70.0" text="UÇUŞ NO" />
-                              <TableColumn fx:id="table_column_status" minWidth="0.0" prefWidth="87.2000732421875" text="DURUM" />
+                            <TableColumn fx:id="table_column_departure" prefWidth="130.39996719360352" text="KALKIŞ" />
+                            <TableColumn fx:id="table_column_arrival" prefWidth="130.40000915527344" text="VARIŞ" />
+                              <TableColumn fx:id="table_column_flightDate" prefWidth="100.0" text="UÇUŞ TARİHİ" />
+                              <TableColumn fx:id="table_column_departureTime" prefWidth="110.0" text="KALKIŞ ZAMANI" />
+                              <TableColumn fx:id="table_column_arrivalTime" minWidth="0.0" prefWidth="110.0" text="VARIŞ ZAMANI" />
+                              <TableColumn fx:id="table_column_flightNumber" prefWidth="80.00018310546875" text="UÇUŞ NO" />
+                              <TableColumn fx:id="table_column_flightDetails" prefWidth="115.0" text="UÇUŞ DETAYLARI" />
                           </columns>
                         </TableView>
                         <TextField layoutX="420.0" layoutY="12.0" prefHeight="26.0" prefWidth="365.0" promptText="ARA" />
@@ -160,7 +150,7 @@
             <AnchorPane fx:id="planesPane" prefHeight="615.2" prefWidth="724.8" style="-fx-background-color: yellow;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <AnchorPane fx:id="personnelsPane" prefHeight="615.2" prefWidth="724.8" style="-fx-background-color: blue;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <AnchorPane fx:id="passengersPane" prefHeight="615.2" prefWidth="724.8" style="-fx-background-color: red;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="dashboardPane" prefHeight="615.2" prefWidth="724.8" style="-fx-background-color: black;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="dashboardPane" prefHeight="615.2" prefWidth="724.8" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </center>

@@ -1,6 +1,7 @@
 package operations;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +16,7 @@ public class AirportOperations {
 
     private static final DBConnection conn = new DBConnection();
     private static final Connection con = conn.connDb();
+    private static PreparedStatement ps = null;
     private static Statement st = null;
     private static ResultSet rs = null;
 
@@ -40,8 +42,7 @@ public class AirportOperations {
                 String sehir = rs.getString(2);
                 String havaalani = rs.getString(3);
                 String iatakodu = rs.getString(4);
-                String kullanim = rs.getString(5);
-                Airport airport = new Airport(id, sehir, havaalani, iatakodu, kullanim);
+                Airport airport = new Airport(id, sehir, havaalani, iatakodu);
                 airportList.add(airport);
             }
 
@@ -49,6 +50,31 @@ public class AirportOperations {
 
             return airports;
         } catch (SQLException ex) {
+            Logger.getLogger(AirportOperations.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public static Airport getAirport(String airportName) {
+    	String query = "SELECT * FROM HAVAALANLARI H "
+    			+ "JOIN "
+    			+ "SEHIRLER S ON H.SEHIRID = S.ID "
+    			+ "WHERE HAVAALANI = ?";
+    	try {
+    		ps = con.prepareStatement(query);
+    		ps.setString(1, airportName);
+    		rs = ps.executeQuery();
+    		
+    		Airport airport = null;
+    		while(rs.next()) {
+    			int id = rs.getInt(1);
+    			String sehir = rs.getString(2);
+    			String havaalani = rs.getString(3);
+    			String iatakodu = rs.getString(4);
+    			airport = new Airport(id, sehir, havaalani, iatakodu);
+    		}
+    		return airport;    		
+    	} catch (SQLException ex) {
             Logger.getLogger(AirportOperations.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }

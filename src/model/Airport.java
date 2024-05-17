@@ -6,14 +6,12 @@ public class Airport {
     private String sehir;
     private String havaalani;
     private String iatakodu;
-    private String kullanim;
 
-    public Airport(int id, String sehir, String havaalani, String iatakodu, String kullanim) {
+    public Airport(int id, String sehir, String havaalani, String iatakodu) {
         this.id = id;
         this.sehir = sehir;
         this.havaalani = havaalani;
         this.iatakodu = iatakodu;
-        this.kullanim = kullanim;
     }
 
     public int getId() {
@@ -47,13 +45,4 @@ public class Airport {
     public void setIatakodu(String iatakodu) {
         this.iatakodu = iatakodu;
     }
-
-    public String getKullanim() {
-        return kullanim;
-    }
-
-    public void setKullanim(String kullanim) {
-        this.kullanim = kullanim;
-    }
-
 }

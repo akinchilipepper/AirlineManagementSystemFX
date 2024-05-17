@@ -26,7 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class LoginController implements Initializable {
+public class LoginViewController implements Initializable {
 	@FXML private AnchorPane mainPane;
 	@FXML private JFXButton confirmButton;
     @FXML private JFXTextField txtUsername;
