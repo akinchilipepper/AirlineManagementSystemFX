@@ -132,5 +132,4 @@ public class InfoPageViewController implements Initializable {
 		updateCommitButton.setVisible(false);
 		updateCancelButton.setVisible(false);
 	}
-
 }

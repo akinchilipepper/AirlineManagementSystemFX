@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import model.Flight;
 import model.Passenger;
-import model.Seat;
-import model.Ticket;
+
 import system.DBConnection;
 
 public class PassengerOperations {
@@ -46,35 +44,6 @@ public class PassengerOperations {
 			return passengers;
 		} catch (SQLException ex) {
 			Logger.getLogger(FlightOperations.class.getName()).log(Level.SEVERE, null, ex);
-			return null;
-		}
-	}
-
-	public static Ticket[] getPassengerTickets(Passenger passenger) {
-		String query = "SELECT ID, UCUSID, KOLTUKID, PNR FROM BILETLER WHERE YOLCUID = ?";
-		try {
-			ps = con.prepareStatement(query);
-			ps.setInt(1, passenger.getId());
-			rs = ps.executeQuery();
-			ArrayList<Ticket> ticketList = new ArrayList<>();
-			while (rs.next()) {
-				int id = rs.getInt(1);
-				int ucusId = rs.getInt(2);
-				int koltukId = rs.getInt(3);
-				String pnr = rs.getString(4);
-
-				Flight flight = FlightOperations.getFlight(ucusId);
-				Seat seat = SeatOperations.getSeat(flight, koltukId);
-
-				Ticket ticket = new Ticket(id, pnr, passenger, flight, seat);
-				ticketList.add(ticket);
-			}
-
-			Ticket[] tickets = ticketList.toArray(Ticket[]::new);
-
-			return tickets;
-		} catch (SQLException ex) {
-			Logger.getLogger(PassengerOperations.class.getName()).log(Level.SEVERE, null, ex);
 			return null;
 		}
 	}

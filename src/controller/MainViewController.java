@@ -393,7 +393,17 @@ public class MainViewController implements Initializable {
 			button.setPrefWidth(130);
 			button.setOnAction(event -> {
 				try {
+					int selectedRow = passengersTable.getSelectionModel().getSelectedIndex();
 					
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PassengerTicketsView.fxml"));
+					Parent root = loader.load();
+					PassengerTicketsViewController controller = loader.getController();
+					controller.initalizeObjects(passengers[selectedRow]);
+					
+					Scene scene = new Scene(root);
+					Stage stage = new Stage();
+					stage.setScene(scene);
+					stage.show();
 				} catch (IndexOutOfBoundsException e) {
 					JOptionPane.showMessageDialog(null, "Lütfen bir satır seçin");
 				} catch (Exception e) {
