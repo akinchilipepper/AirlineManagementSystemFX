@@ -23,28 +23,23 @@
       <AnchorPane prefHeight="565.0" prefWidth="375.0" styleClass="backgroundColor" stylesheets="@MainView.css" BorderPane.alignment="CENTER">
          <children>
             <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="152.0" layoutY="147.0" size="100" />
-            <Button fx:id="flightManagementButton" layoutX="87.0" layoutY="280.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="UÇUŞ YÖNETİMİ" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="flightManagementButton" layoutX="88.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="UÇUŞ YÖNETİMİ" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Line endX="144.20001220703125" endY="1.52587890625E-5" layoutX="165.0" layoutY="218.0" startX="-100.0" />
-            <Button fx:id="planesButton" layoutX="87.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="UÇAKLAR" textFill="WHITE">
+            <Button fx:id="flightsButton" layoutX="88.0" layoutY="358.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="UÇUŞLAR" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="personnelsButton" layoutX="87.0" layoutY="380.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="PERSONEL İŞLEMLERİ" textFill="WHITE">
+            <Button fx:id="passengersButton" layoutX="88.0" layoutY="408.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="YOLCU İŞLEMLERİ" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="passengersButton" layoutX="87.0" layoutY="430.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="YOLCU İŞLEMLERİ" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="dashboardButton" layoutX="88.0" layoutY="480.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="DASHBOARD" textFill="WHITE">
+            <Button fx:id="dashboardButton" layoutX="88.0" layoutY="458.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="DASHBOARD" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -56,9 +51,9 @@
             </Label>
             <Button fx:id="logoutButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="33.0" styleClass="UIButton" stylesheets="@MainView.css">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" styleClass="UIIcon">
                      <image>
-                        <Image url="@../../../../Downloads/logout.png" />
+                        <Image url="@../images/left-arrow.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -84,7 +79,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="flightsPane" prefHeight="615.2" prefWidth="724.8" AnchorPane.bottomAnchor="0.7999999999999545" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="flightManagementPane" prefHeight="615.2" prefWidth="724.8" AnchorPane.bottomAnchor="0.7999999999999545" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane layoutX="11.0" layoutY="14.0" prefHeight="226.0" prefWidth="801.0" stylesheets="@MainView.css">
                      <styleClass>
@@ -126,18 +121,20 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="flightsTable" layoutX="11.0" layoutY="55.0" prefHeight="295.0" prefWidth="778.0">
+                        <TableView fx:id="flightManagementTable" layoutX="11.0" layoutY="55.0" prefHeight="295.0" prefWidth="778.0" stylesheets="@MainView.css">
                           <columns>
-                            <TableColumn fx:id="table_column_departure" prefWidth="130.39996719360352" text="KALKIŞ" />
-                            <TableColumn fx:id="table_column_arrival" prefWidth="130.40000915527344" text="VARIŞ" />
-                              <TableColumn fx:id="table_column_flightDate" prefWidth="100.0" text="UÇUŞ TARİHİ" />
-                              <TableColumn fx:id="table_column_departureTime" prefWidth="110.0" text="KALKIŞ ZAMANI" />
-                              <TableColumn fx:id="table_column_arrivalTime" minWidth="0.0" prefWidth="110.0" text="VARIŞ ZAMANI" />
-                              <TableColumn fx:id="table_column_flightNumber" prefWidth="80.00018310546875" text="UÇUŞ NO" />
-                              <TableColumn fx:id="table_column_flightDetails" prefWidth="115.0" text="UÇUŞ DETAYLARI" />
+                            <TableColumn fx:id="mDpColumn" editable="false" minWidth="7.20001220703125" prefWidth="150.0" resizable="false" sortable="false" text="KALKIŞ" />
+                            <TableColumn fx:id="mArColumn" editable="false" minWidth="0.0" prefWidth="150.0" resizable="false" sortable="false" text="VARIŞ" />
+                              <TableColumn fx:id="mFlightDateColumn" editable="false" prefWidth="125.0" resizable="false" sortable="false" text="UÇUŞ TARİHİ" />
+                              <TableColumn fx:id="mDpTimeColumn" editable="false" prefWidth="125.0" resizable="false" sortable="false" text="KALKIŞ ZAMANI" />
+                              <TableColumn fx:id="mFlightNumberColumn" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="UÇUŞ NO" />
+                              <TableColumn fx:id="mDetailsColumn" editable="false" prefWidth="125.60001220703123" resizable="false" sortable="false" text="UÇUŞ DETAYLARI" />
                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
-                        <TextField layoutX="420.0" layoutY="12.0" prefHeight="26.0" prefWidth="365.0" promptText="ARA" />
+                        <TextField layoutX="423.0" layoutY="12.0" prefHeight="26.0" prefWidth="365.0" promptText="UÇUŞ NO" />
                         <FontAwesomeIconView glyphName="SEARCH" layoutX="765.0" layoutY="29.0" size="13.0" />
                         <Label layoutX="14.0" layoutY="15.0" text="UÇUŞLAR">
                            <font>
@@ -147,9 +144,61 @@
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
-            <AnchorPane fx:id="planesPane" prefHeight="615.2" prefWidth="724.8" style="-fx-background-color: yellow;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="personnelsPane" prefHeight="615.2" prefWidth="724.8" style="-fx-background-color: blue;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane fx:id="passengersPane" prefHeight="615.2" prefWidth="724.8" style="-fx-background-color: red;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="flightsPane" prefHeight="615.2" prefWidth="724.8" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane layoutX="8.0" layoutY="60.0" prefHeight="546.0" prefWidth="807.0" stylesheets="@MainView.css">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="flightsTable" layoutX="10.0" layoutY="57.0" prefHeight="481.0" prefWidth="786.0">
+                           <columns>
+                              <TableColumn fx:id="flightNumberColumn" editable="false" resizable="false" sortable="false" text="UÇUŞ NO" />
+                              <TableColumn fx:id="dpColumn" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="KALKIŞ" />
+                              <TableColumn fx:id="arColumn" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="VARIŞ" />
+                              <TableColumn fx:id="dpTimeColumn" editable="false" prefWidth="130.0" resizable="false" sortable="false" text="KALKIŞ ZAMANI" />
+                              <TableColumn fx:id="arTimeColumn" editable="false" prefWidth="130.0" resizable="false" sortable="false" text="VARIŞ ZAMANI" />
+                              <TableColumn fx:id="flightStatusColumn" editable="false" prefWidth="144.79996337890623" resizable="false" sortable="false" text="UÇUŞ DURUMU" />
+                           </columns>
+                        </TableView>
+                        <TextField layoutX="10.0" layoutY="13.0" prefHeight="30.0" prefWidth="295.0" promptText="ARA" />
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="285.0" layoutY="32.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="371.0" layoutY="14.0" text="UÇUŞLAR">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane fx:id="passengersPane" prefHeight="615.2" prefWidth="724.8" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="366.0" layoutY="14.0" text="YOLCULAR">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="8.0" layoutY="60.0" prefHeight="546.0" prefWidth="807.0" stylesheets="@MainView.css">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="passengersTable" layoutX="10.0" layoutY="57.0" prefHeight="481.0" prefWidth="786.0">
+                          <columns>
+                            <TableColumn fx:id="nameColumn" prefWidth="170.0" text="AD" />
+                            <TableColumn fx:id="surnameColumn" prefWidth="170.0" text="SOYAD" />
+                              <TableColumn fx:id="genderColumn" prefWidth="130.39996337890625" text="CİNSİYET" />
+                              <TableColumn fx:id="birthdateColumn" prefWidth="176.80010986328125" text="DOĞUM TARİHİ" />
+                              <TableColumn fx:id="ticketsColumn" prefWidth="137.60001220703123" text="BİLETLER" />
+                          </columns>
+                        </TableView>
+                        <TextField layoutX="10.0" layoutY="13.0" prefHeight="30.0" prefWidth="295.0" promptText="ARA" />
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="285.0" layoutY="32.0" />
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
             <AnchorPane fx:id="dashboardPane" prefHeight="615.2" prefWidth="724.8" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>

@@ -26,3 +26,25 @@
 .shadow {
 	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5,0,0,0);
 }
+
+.table-view {
+	-fx-padding: 0px;
+}
+
+.table-view .column-header-background {
+	-fx-background-color: linear-gradient(to right, #383838, #2d2d2d);
+	-fx-background-insets: 0 0 0 0;
+}
+
+.table-view .column-header, .filter {
+	-fx-background-color: transparent;
+	-fx-size: 30px;
+}
+
+.table-view .column-header .label {
+	-fx-text-fill: #fff;
+}
+
+.table-view .table-column{
+	-fx-alignment: center ;
+}

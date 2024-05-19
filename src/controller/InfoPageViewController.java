@@ -3,11 +3,15 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.Flight;
 import operations.FlightOperations;
 
@@ -29,21 +33,26 @@ public class InfoPageViewController implements Initializable {
     @FXML private TextField passengerCountField;
     @FXML private TextField planeModelField;
     @FXML private Button updateFlightButton;
-    @FXML private Button deleteFlightButton;
+    @FXML private Button cancelFlightButton;
     @FXML private Button updateCommitButton;
     @FXML private Button updateCancelButton;
+    @FXML private TableView<Flight> flightsTable;
     private Flight flight;
+    private MainViewController mainViewController;
+    private String dpTimeBeforeChange;
+    private String arTimeBeforeChange;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 	}
 
-    public void initializeFlight(Flight flight) {
+    public void initializeObjects(Flight flight, int passengerCount, MainViewController mainViewController) {
         this.flight = flight;
+        this.mainViewController = mainViewController;
         
         planeModelField.setText(flight.getUcak().getModel());
-		passengerCountField.setText(String.valueOf(flight.getUcak().getKapasite()) + "/");
+		passengerCountField.setText(String.valueOf(flight.getUcak().getKapasite()) + "/" + passengerCount);
 		flightStatusField.setText(flight.getDurum());
 		dpTimeField.setText(flight.getKalkisZamani()); 
 		dpDateField.setText(flight.getKalkisTarihi());
@@ -59,50 +68,66 @@ public class InfoPageViewController implements Initializable {
 		flightNumberLabel.setText(flight.getUcusNo());
     }
 	
-	public void deleteFlight() {
-		boolean isFlightDeleted = FlightOperations.deleteFlight(flight.getId());
-		if(isFlightDeleted) {
-			
-		} else {
-			
+	public void cancelFlight() {
+		int choice = JOptionPane.showConfirmDialog(null, "Uçuşu iptal etmek istediğinize emin misiniz?\n"
+				+ "Uçuşu iptal etmek yolcu biletlerinin iptal olmasına sebep olacaktır");
+		if(choice == 0) {
+			boolean result = FlightOperations.cancelFlight(flight);
+			if(result) {
+				mainViewController.setFlightsTable();
+				JOptionPane.showMessageDialog(null, "Uçuş iptal edildi");
+				Stage stage = (Stage) cancelFlightButton.getScene().getWindow();
+		        stage.close();				
+			} else {
+				JOptionPane.showMessageDialog(null, "Uçuş iptal edilemedi");
+			}
 		}
 	}
 	
 	public void updateFlight() {
-		planeModelField.setEditable(true);
-		passengerCountField.setEditable(true);
-		flightStatusField.setEditable(true);
 		dpTimeField.setEditable(true); 
-		dpDateField.setEditable(true);
-		dpAirportField.setEditable(true);
 		arTimeField.setEditable(true);
-		arDateField.setEditable(true);
-		arAirportField.setEditable(true);
 		
 		updateFlightButton.setVisible(false);
-		deleteFlightButton.setVisible(false);
+		cancelFlightButton.setVisible(false);
 		
 		updateCommitButton.setVisible(true);
 		updateCancelButton.setVisible(true);
+		
+		this.dpTimeBeforeChange = dpTimeField.getText();
+		this.arTimeBeforeChange = arTimeField.getText();
 	}
 	
 	public void updateCommit() {
-		
+		String dpTimeAfterChange = dpTimeField.getText();
+	    String arTimeAfterChange = arTimeField.getText();
+	    
+	    String flightStatus = flight.getDurum();
+	    if(flightStatus.equals("BEKLİYOR")) {
+	    	if(dpTimeAfterChange.equals(dpTimeBeforeChange) && arTimeAfterChange.equals(arTimeBeforeChange)) {
+		    	JOptionPane.showMessageDialog(null, "Herhangi bir değişiklik yapmadınız");
+		    } else {
+		    	int choice = JOptionPane.showConfirmDialog(null, "Uçuşu saatleri değiştirilecek. Onaylıyor musunuz?");
+		    	if(choice == 0) {
+		    		boolean result = FlightOperations.updateFlight(flight, dpTimeAfterChange, arTimeAfterChange);
+		    		if(result) {
+		    			JOptionPane.showMessageDialog(null, "UÇUŞ GÜNCELLENDİ");
+		    			mainViewController.setFlightsTable();
+		    			updateCancel();
+		    		}
+		    	}
+		    }
+	    } else {
+	    	JOptionPane.showMessageDialog(null, "Bu uçuşu erteleyemezsiniz");
+	    }
 	}
 	
 	public void updateCancel() {
-		planeModelField.setEditable(false);
-		passengerCountField.setEditable(false);
-		flightStatusField.setEditable(false);
 		dpTimeField.setEditable(false); 
-		dpDateField.setEditable(false);
-		dpAirportField.setEditable(false);
 		arTimeField.setEditable(false);
-		arDateField.setEditable(false);
-		arAirportField.setEditable(false);
-		
+
 		updateFlightButton.setVisible(true);
-		deleteFlightButton.setVisible(true);
+		cancelFlightButton.setVisible(true);
 		
 		updateCommitButton.setVisible(false);
 		updateCancelButton.setVisible(false);

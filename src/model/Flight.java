@@ -12,10 +12,11 @@ public class Flight {
     String varisZamani;
     String durum;
     String ucusNo;
+    int biletFiyati;
 
     public Flight(int id, Plane ucak, Airport kalkisyeri, Airport varisyeri, String kalkisTarihi,
-            String varisTarihi, String kalkisZamani, String varisZamani, String durum, String ucusNo) {
-        super();
+            String varisTarihi, String kalkisZamani, String varisZamani, 
+            String durum, String ucusNo, int biletFiyati) {
         this.id = id;
         this.ucak = ucak;
         this.kalkisyeri = kalkisyeri;
@@ -26,6 +27,7 @@ public class Flight {
         this.varisZamani = varisZamani;
         this.durum = durum;
         this.ucusNo = ucusNo;
+        this.biletFiyati = biletFiyati;
     }
 
     public Flight() {
@@ -111,4 +113,12 @@ public class Flight {
     public void setUcusNo(String ucusNo) {
         this.ucusNo = ucusNo;
     }
+
+	public int getBiletFiyati() {
+		return biletFiyati;
+	}
+
+	public void setBiletFiyati(int biletFiyati) {
+		this.biletFiyati = biletFiyati;
+	}
 }

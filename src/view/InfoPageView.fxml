@@ -18,12 +18,12 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="page" stylesheets="@FlightInfoDesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoPageViewController">
    <children>
       <Line endX="100.0" layoutX="248.0" layoutY="93.0" startX="-35.399993896484375" />
-      <Label fx:id="departureAirportIATALabel" layoutX="164.0" layoutY="76.0">
+      <Label fx:id="departureAirportIATALabel" alignment="CENTER" contentDisplay="CENTER" layoutX="136.0" layoutY="75.0" prefHeight="35.0" prefWidth="60.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="arrivalAirportIATALabel" alignment="CENTER" layoutX="614.0" layoutY="75.0" textAlignment="CENTER">
+      <Label fx:id="arrivalAirportIATALabel" alignment="CENTER" layoutX="615.0" layoutY="75.0" prefWidth="60.0" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -33,22 +33,17 @@
             <Image url="@../../../../Downloads/plane.png" />
          </image>
       </ImageView>
-      <Label fx:id="departureTimeLabel" layoutX="154.0" layoutY="58.0">
+      <Label fx:id="departureTimeLabel" alignment="CENTER" layoutX="131.0" layoutY="58.0" prefWidth="70.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="arrivalTimeLabel" layoutX="607.0" layoutY="58.0">
+      <Label fx:id="arrivalTimeLabel" alignment="CENTER" layoutX="610.0" layoutY="58.0" prefWidth="70.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="flightTimeLabel" layoutX="382.0" layoutY="119.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="flightNumberLabel" layoutX="383.0" layoutY="48.0">
+      <Label fx:id="flightNumberLabel" alignment="CENTER" layoutX="370.0" layoutY="48.0" prefWidth="70.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -155,8 +150,8 @@
             </VBox>
          </children>
       </GridPane>
-      <Line endX="100.0" layoutX="497.0" layoutY="94.0" startX="-35.399993896484375" />
-      <JFXButton fx:id="deleteFlightButton" layoutX="212.0" layoutY="459.0" onAction="#deleteFlight" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: RED;" text="UÇUŞU SİL" textFill="WHITE" />
+      <Line endX="100.0" layoutX="496.0" layoutY="93.0" startX="-35.399993896484375" />
+      <JFXButton fx:id="cancelFlightButton" layoutX="212.0" layoutY="459.0" onAction="#cancelFlight" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: RED;" text="UÇUŞU İPTAL ET" textFill="WHITE" />
       <JFXButton fx:id="updateFlightButton" layoutX="418.0" layoutY="459.0" onAction="#updateFlight" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: BLUE;" text="UÇUŞU GÜNCELLE" textFill="WHITE" />
       <Button fx:id="updateCommitButton" layoutX="212.0" layoutY="459.0" mnemonicParsing="false" onAction="#updateCommit" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: BLUE;" text="GÜNCELLE" visible="false" />
       <Button fx:id="updateCancelButton" layoutX="418.0" layoutY="459.0" mnemonicParsing="false" onAction="#updateCancel" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: RED;" text="İPTAL ET" visible="false" />
