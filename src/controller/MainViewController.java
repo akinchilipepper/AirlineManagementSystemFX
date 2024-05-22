@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -20,9 +21,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -30,6 +34,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Airport;
 import model.Flight;
 import model.Passenger;
@@ -38,143 +43,120 @@ import operations.AirportOperations;
 import operations.FlightOperations;
 import operations.PassengerOperations;
 import operations.PlaneOperations;
+import operations.TicketOperations;
 
 public class MainViewController implements Initializable {
 
-	@FXML
-	private ComboBox<String> arrivalBox;
-	@FXML
-	private ComboBox<String> planeBox;
-	@FXML
-	private ComboBox<String> statusBox;
-	@FXML
-	private ComboBox<String> originBox;
-	@FXML
-	private Button closeButton;
-	@FXML
-	private Button dashboardButton;
-	@FXML
-	private Button flightsButton;
-	@FXML
-	private Button passengersButton;
-	@FXML
-	private Button flightManagementButton;
-	@FXML
-	private Button logoutButton;
-	@FXML
-	private Button addFlightButton;
-	@FXML
-	private AnchorPane dashboardPane;
-	@FXML
-	private AnchorPane flightManagementPane;
-	@FXML
-	private AnchorPane passengersPane;
-	@FXML
-	private AnchorPane personnelsPane;
-	@FXML
-	private AnchorPane flightsPane;
-	@FXML
-	private AnchorPane topBar;
-	@FXML
-	private TableView<Flight> flightManagementTable;
-	@FXML
-	private TableView<Flight> flightsTable;
-	@FXML
-	private TableView<Passenger> passengersTable;
+	@FXML private ComboBox<String> arrivalBox;
+	@FXML private ComboBox<String> planeBox;
+	@FXML private ComboBox<String> statusBox;
+	@FXML private ComboBox<String> originBox;
 	
+	@FXML private Button closeButton;
+	@FXML private Button dashboardButton;
+	@FXML private Button flightsButton;
+	@FXML private Button passengersButton;
+	@FXML private Button flightManagementButton;
+	@FXML private Button logoutButton;
+	@FXML private Button addFlightButton;
 	
-	@FXML
-	private TableColumn<Flight, String> mArColumn;
-	@FXML
-	private TableColumn<Flight, String> mDpColumn;
-	@FXML
-	private TableColumn<Flight, String> mFlightDateColumn;
-	@FXML
-	private TableColumn<Flight, String> mDpTimeColumn;
-	@FXML
-	private TableColumn<Flight, String> mFlightNumberColumn;
-	@FXML
-	private TableColumn<Flight, Void> mDetailsColumn;
+	@FXML private AnchorPane dashboardPane;
+	@FXML private AnchorPane flightManagementPane;
+	@FXML private AnchorPane passengersPane;
+	@FXML private AnchorPane personnelsPane;
+	@FXML private AnchorPane flightsPane;
+	@FXML private AnchorPane topBar;
 	
+	@FXML private TableView<Flight> flightManagementTable;
+	@FXML private TableView<Flight> flightsTable;
+	@FXML private TableView<Passenger> passengersTable;
+
+	@FXML private TableColumn<Flight, String> mArColumn;
+	@FXML private TableColumn<Flight, String> mDpColumn;
+	@FXML private TableColumn<Flight, String> mFlightDateColumn;
+	@FXML private TableColumn<Flight, String> mDpTimeColumn;
+	@FXML private TableColumn<Flight, String> mFlightNumberColumn;
+	@FXML private TableColumn<Flight, Void> mDetailsColumn;
+
+	@FXML private TableColumn<Flight, String> flightNumberColumn;
+	@FXML private TableColumn<Flight, String> arColumn;
+	@FXML private TableColumn<Flight, String> dpColumn;
+	@FXML private TableColumn<Flight, String> arTimeColumn;
+	@FXML private TableColumn<Flight, String> dpTimeColumn;
+	@FXML private TableColumn<Flight, String> flightStatusColumn;
+
+	@FXML private TableColumn<Passenger, String> nameColumn;
+	@FXML private TableColumn<Passenger, String> surnameColumn;
+	@FXML private TableColumn<Passenger, String> genderColumn;
+	@FXML private TableColumn<Passenger, String> birthdateColumn;
+	@FXML private TableColumn<Passenger, Void> ticketsColumn;
+
+	@FXML private DatePicker departureDatePicker;
+	@FXML private DatePicker arrivalDatePicker;
 	
-	@FXML
-	private TableColumn<Flight, String> flightNumberColumn;
-	@FXML
-	private TableColumn<Flight, String> arColumn;
-	@FXML
-	private TableColumn<Flight, String> dpColumn;
-	@FXML
-	private TableColumn<Flight, String> arTimeColumn;
-	@FXML
-	private TableColumn<Flight, String> dpTimeColumn;
-	@FXML
-	private TableColumn<Flight, String> flightStatusColumn;
+	@FXML private TextField departureTimeField;
+	@FXML private TextField arrivalTimeField;
+	@FXML private TextField flightNumberField;
+	@FXML private TextField ticketPriceField;
+	@FXML private TextField flightManagementSearchField;
+	@FXML private TextField flightSearchField;
+	@FXML private TextField passengerSearchField;
 	
+	@FXML private Label flightCountLabel;
+	@FXML private Label userCountLabel;
+	@FXML private Label incomeLabel;
 	
-	@FXML
-	private TableColumn<Passenger, String> nameColumn;
-	@FXML
-	private TableColumn<Passenger, String> surnameColumn;
-	@FXML
-	private TableColumn<Passenger, String> genderColumn;
-	@FXML
-	private TableColumn<Passenger, String> birthdateColumn;
-	@FXML
-	private TableColumn<Passenger, Void> ticketsColumn;
-	
-	
-	@FXML
-	private DatePicker departureDatePicker;
-	@FXML
-	private DatePicker arrivalDatePicker;
-	@FXML
-	private TextField departureTimeField;
-	@FXML
-	private TextField arrivalTimeField;
-	@FXML
-	private TextField flightNumberField;
-	@FXML
-	private TextField ticketPriceField;
-	
+	@FXML private AreaChart<String, Double> dashboardChart;
+
 	private Flight[] flights;
 	private Passenger[] passengers;
+	
+	private ObservableList<Flight> flightData;
+	private ObservableList<Passenger> passengerData;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setAllBoxItems();
 		setFlightsTable();
+		setPassengersTable();
+		
+		displayFlightsCount();
+		displayUserCount();
+		displayTotalIncome();
+		displayAreaChart();
+		
+		
 		departureDatePicker.setConverter(converter);
 		arrivalDatePicker.setConverter(converter);
-		setPassengersTable();
 	}
-	
+
 	public void setPassengersTable() {
 		passengers = PassengerOperations.getPassengers();
-		ObservableList<Passenger> data = FXCollections.observableArrayList();
-		
-		for(Passenger passenger : passengers) {
-			data.add(passenger);
+		passengerData = FXCollections.observableArrayList();
+
+		for (Passenger passenger : passengers) {
+			passengerData.add(passenger);
 		}
-		
+
 		nameColumn.setCellValueFactory(new PropertyValueFactory<>("ad"));
 		surnameColumn.setCellValueFactory(new PropertyValueFactory<>("soyad"));
 		genderColumn.setCellValueFactory(new PropertyValueFactory<>("cinsiyet"));
 		birthdateColumn.setCellValueFactory(new PropertyValueFactory<>("dogumtarihi"));
 		ticketsColumn.setCellFactory(param -> new PassengerButtonCell());
-		
-		passengersTable.setItems(data);
+
+		passengersTable.setItems(passengerData);
 	}
 
 	public void setFlightsTable() {
 		flights = FlightOperations.getFlights();
-		ObservableList<Flight> data = FXCollections.observableArrayList();
+		flightData = FXCollections.observableArrayList();
 
 		for (Flight flight : flights) {
-			data.add(flight);
+			flightData.add(flight);
 		}
 
 		mDpColumn.setCellValueFactory(cellData -> {
-			Airport airport = cellData.getValue().getKalkisyeri();
+			Airport airport = cellData.getValue().getKalkisYeri();
 			if (airport != null) {
 				return new SimpleStringProperty(airport.getHavaalani());
 			} else {
@@ -182,7 +164,7 @@ public class MainViewController implements Initializable {
 			}
 		});
 		mArColumn.setCellValueFactory(cellData -> {
-			Airport airport = cellData.getValue().getVarisyeri();
+			Airport airport = cellData.getValue().getVarisYeri();
 			if (airport != null) {
 				return new SimpleStringProperty(airport.getHavaalani());
 			} else {
@@ -193,11 +175,10 @@ public class MainViewController implements Initializable {
 		mDpTimeColumn.setCellValueFactory(new PropertyValueFactory<>("kalkisZamani"));
 		mFlightNumberColumn.setCellValueFactory(new PropertyValueFactory<>("ucusNo"));
 		mDetailsColumn.setCellFactory(param -> new FlightButtonCell());
-		
-		
+
 		flightNumberColumn.setCellValueFactory(new PropertyValueFactory<>("ucusNo"));
 		dpColumn.setCellValueFactory(cellData -> {
-			Airport airport = cellData.getValue().getKalkisyeri();
+			Airport airport = cellData.getValue().getKalkisYeri();
 			if (airport != null) {
 				return new SimpleStringProperty(airport.getHavaalani());
 			} else {
@@ -205,7 +186,7 @@ public class MainViewController implements Initializable {
 			}
 		});
 		arColumn.setCellValueFactory(cellData -> {
-			Airport airport = cellData.getValue().getVarisyeri();
+			Airport airport = cellData.getValue().getVarisYeri();
 			if (airport != null) {
 				return new SimpleStringProperty(airport.getHavaalani());
 			} else {
@@ -213,19 +194,19 @@ public class MainViewController implements Initializable {
 			}
 		});
 		dpTimeColumn.setCellValueFactory(cellData -> {
-		    Flight model = cellData.getValue();
-		    return new SimpleStringProperty(model.getKalkisTarihi() + " / " + model.getKalkisZamani());
+			Flight model = cellData.getValue();
+			return new SimpleStringProperty(model.getKalkisTarihi() + " / " + model.getKalkisZamani());
 		});
 		arTimeColumn.setCellValueFactory(cellData -> {
-		    Flight model = cellData.getValue();
-		    return new SimpleStringProperty(model.getVarisTarihi() + " / " + model.getVarisZamani());
+			Flight model = cellData.getValue();
+			return new SimpleStringProperty(model.getVarisTarihi() + " / " + model.getVarisZamani());
 		});
 		flightStatusColumn.setCellValueFactory(new PropertyValueFactory<>("durum"));
 
-		flightManagementTable.setItems(data);
-		flightsTable.setItems(data);
+		flightManagementTable.setItems(flightData);
+		flightsTable.setItems(flightData);
 	}
-
+	
 	public void setAllBoxItems() {
 		Airport[] airports = AirportOperations.getAirports();
 		String[] allAirports = new String[airports.length];
@@ -246,9 +227,9 @@ public class MainViewController implements Initializable {
 		arrivalBox.getItems().addAll(allAirports);
 		originBox.getItems().addAll(allAirports);
 	}
-
+	
 	public void addFlight() {
-		if (isFieldsAreEmpty()) {
+		if (areFieldsAreEmpty()) {
 			JOptionPane.showMessageDialog(null, "LÜTFEN TÜM ALANLARI DOLDURUN");
 		} else {
 			String departureAirport = originBox.getValue();
@@ -274,8 +255,50 @@ public class MainViewController implements Initializable {
 			setFlightsTable();
 		}
 	}
-
-	public boolean isFieldsAreEmpty() {
+	
+	public void displayFlightsCount() {
+		int flightCount = FlightOperations.getFlightsCount();
+		flightCountLabel.setText(String.valueOf(flightCount));
+	}
+	
+	public void displayUserCount() {
+		int userCount = PassengerOperations.getPassengersCount();
+		userCountLabel.setText(String.valueOf(userCount));
+	}
+	
+	public void displayTotalIncome() {
+		double totalIncome = TicketOperations.getTotalIncome();
+		incomeLabel.setText(String.valueOf(totalIncome) + " TL");
+	}
+	
+	public void displayAreaChart() {
+		dashboardChart.getData().clear();
+		XYChart.Series<String, Double> data = TicketOperations.getIncomeChart();
+		dashboardChart.getData().add(data);
+	}
+	
+	public void flightManagementSearch() {
+		String search = flightManagementSearchField.getText();
+		ObservableList<Flight> list = FlightOperations.getSearchedFlight(search);
+		
+		flightManagementTable.setItems(list);
+	}
+	
+	public void flightSearch() {
+		String search = flightSearchField.getText();
+		ObservableList<Flight> list = FlightOperations.getSearchedFlight(search);
+		
+		flightsTable.setItems(list);
+	}
+	
+	public void passengerSearch() {
+		String search = passengerSearchField.getText();
+		ObservableList<Passenger> list = PassengerOperations.getSearchedPassengers(search);
+		
+		passengersTable.setItems(list);
+	}
+	
+	public boolean areFieldsAreEmpty() {
 		if (originBox.getValue() == null || arrivalBox.getValue() == null
 				|| departureDatePicker.getValue() == null
 				|| arrivalDatePicker.getValue() == null || departureTimeField.getText().isEmpty()
@@ -294,9 +317,22 @@ public class MainViewController implements Initializable {
 	}
 
 	public void logout() {
-		Stage stage = (Stage) logoutButton.getScene().getWindow();
-		stage.close();
+	    Stage currentStage = (Stage) logoutButton.getScene().getWindow();
+	    currentStage.close();
+	    
+	    try {
+	        Parent root = FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"));
+	        Scene scene = new Scene(root);
+	        
+	        Stage newStage = new Stage();
+	        newStage.setScene(scene);
+	        newStage.initStyle(StageStyle.UNDECORATED);
+	        newStage.show();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
+
 
 	public void switchForm(ActionEvent event) {
 		if (event.getSource() == flightManagementButton) {
@@ -319,31 +355,20 @@ public class MainViewController implements Initializable {
 			flightsPane.setVisible(false);
 			passengersPane.setVisible(false);
 			dashboardPane.setVisible(true);
+			displayFlightsCount();
+			displayUserCount();
+			displayTotalIncome();
+			displayAreaChart();
 		}
 	}
 
-	StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	StringConverter<LocalDate> converter=new StringConverter<LocalDate>(){DateTimeFormatter dateFormatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-		@Override
-		public String toString(LocalDate date) {
-			if (date != null) {
-				return dateFormatter.format(date);
-			} else {
-				return "";
-			}
-		}
+	@Override public String toString(LocalDate date){if(date!=null){return dateFormatter.format(date);}else{return"";}}
 
-		@Override
-		public LocalDate fromString(String string) {
-			if (string != null && !string.isEmpty()) {
-				return LocalDate.parse(string, dateFormatter);
-			} else {
-				return null;
-			}
-		}
-	};
+	@Override public LocalDate fromString(String string){if(string!=null&&!string.isEmpty()){return LocalDate.parse(string,dateFormatter);}else{return null;}}};
 
+	
 	class FlightButtonCell extends TableCell<Flight, Void> {
 		private final JFXButton button;
 
@@ -353,19 +378,20 @@ public class MainViewController implements Initializable {
 			button.setPrefWidth(120);
 			button.setOnAction(event -> {
 				try {
-					int selectedRow = flightManagementTable.getSelectionModel().getSelectedIndex();
-					int passengerCount = FlightOperations.getPassengersCount(flights[selectedRow]);
-					
+					Flight flight = flightManagementTable.getSelectionModel().getSelectedItem();
+					int passengerCount = PassengerOperations.getPassengersCount(flight);
+
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/InfoPageView.fxml"));
 					Parent root = loader.load();
 					InfoPageViewController controller = loader.getController();
-					controller.initializeObjects(flights[selectedRow], passengerCount, MainViewController.this);
+					controller.initializeObjects(flight, passengerCount, MainViewController.this);
 
 					Scene scene = new Scene(root);
 					Stage stage = new Stage();
 					stage.setScene(scene);
+					stage.setResizable(false);
 					stage.show();
-				} catch (IndexOutOfBoundsException e) {
+				} catch (NullPointerException e) {
 					JOptionPane.showMessageDialog(null, "Lütfen bir satır seçin");
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -383,7 +409,7 @@ public class MainViewController implements Initializable {
 			}
 		}
 	}
-	
+
 	class PassengerButtonCell extends TableCell<Passenger, Void> {
 		private final JFXButton button;
 
@@ -393,16 +419,17 @@ public class MainViewController implements Initializable {
 			button.setPrefWidth(130);
 			button.setOnAction(event -> {
 				try {
-					int selectedRow = passengersTable.getSelectionModel().getSelectedIndex();
-					
+					Passenger passenger = passengersTable.getSelectionModel().getSelectedItem();
+
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PassengerTicketsView.fxml"));
 					Parent root = loader.load();
 					PassengerTicketsViewController controller = loader.getController();
-					controller.initalizeObjects(passengers[selectedRow]);
-					
+					controller.initalizeObjects(passenger);
+
 					Scene scene = new Scene(root);
 					Stage stage = new Stage();
 					stage.setScene(scene);
+					stage.setResizable(false);
 					stage.show();
 				} catch (IndexOutOfBoundsException e) {
 					JOptionPane.showMessageDialog(null, "Lütfen bir satır seçin");

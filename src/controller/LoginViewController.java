@@ -48,7 +48,7 @@ public class LoginViewController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
     	Image flaaiImg = new Image("/images/flaai.png");
     	flaaiImgView.setImage(flaaiImg);
-    	Image planeImg = new Image("/images/plane.png");
+    	Image planeImg = new Image("/images/plane.gif");
     	planeImgView.setImage(planeImg);
     	Image closeImg = new Image("/images/blackcross.png");
     	closeImgView.setImage(closeImg);

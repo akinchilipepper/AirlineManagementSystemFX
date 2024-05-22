@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginViewController">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="backgroundColor" stylesheets="@LoginDesign.css">
+      <AnchorPane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: BLACK;">
          <children>
             <Label layoutX="146.0" layoutY="567.0" prefHeight="18.0" prefWidth="207.0" text="Copyright © 2024 Tüm Hakları Saklıdır" textFill="WHITE" />
             <ImageView fx:id="planeImgView" fitHeight="414.0" fitWidth="414.0" layoutX="43.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">

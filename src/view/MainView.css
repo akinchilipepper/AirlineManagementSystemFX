@@ -48,3 +48,9 @@
 .table-view .table-column{
 	-fx-alignment: center ;
 }
+
+.nav-form {
+	-fx-background-color: linear-gradient(to right, #383838, #2d2d2d);
+	-fx-background-insets: 0 0 0 0;
+	-fx-background-radius: 5px;
+}

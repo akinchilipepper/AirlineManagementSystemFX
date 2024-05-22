@@ -41,6 +41,7 @@ public class InfoPageViewController implements Initializable {
     private MainViewController mainViewController;
     private String dpTimeBeforeChange;
     private String arTimeBeforeChange;
+    private String flightStatusBeforeChange;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -56,13 +57,13 @@ public class InfoPageViewController implements Initializable {
 		flightStatusField.setText(flight.getDurum());
 		dpTimeField.setText(flight.getKalkisZamani()); 
 		dpDateField.setText(flight.getKalkisTarihi());
-		dpAirportField.setText(flight.getKalkisyeri().getHavaalani());
+		dpAirportField.setText(flight.getKalkisYeri().getHavaalani());
 		arTimeField.setText(flight.getVarisZamani());
 		arDateField.setText(flight.getKalkisTarihi());
-		arAirportField.setText(flight.getVarisyeri().getHavaalani());
+		arAirportField.setText(flight.getVarisYeri().getHavaalani());
 		
-		departureAirportIATALabel.setText(flight.getKalkisyeri().getIatakodu());
-		arrivalAirportIATALabel.setText(flight.getVarisyeri().getIatakodu());
+		departureAirportIATALabel.setText(flight.getKalkisYeri().getIatakodu());
+		arrivalAirportIATALabel.setText(flight.getVarisYeri().getIatakodu());
 		departureTimeLabel.setText(flight.getKalkisZamani());
 		arrivalTimeLabel.setText(flight.getVarisZamani());
 		flightNumberLabel.setText(flight.getUcusNo());
@@ -87,6 +88,7 @@ public class InfoPageViewController implements Initializable {
 	public void updateFlight() {
 		dpTimeField.setEditable(true); 
 		arTimeField.setEditable(true);
+		flightStatusField.setEditable(true);
 		
 		updateFlightButton.setVisible(false);
 		cancelFlightButton.setVisible(false);
@@ -96,20 +98,24 @@ public class InfoPageViewController implements Initializable {
 		
 		this.dpTimeBeforeChange = dpTimeField.getText();
 		this.arTimeBeforeChange = arTimeField.getText();
+		this.flightStatusBeforeChange = flightStatusField.getText();
+		
 	}
 	
 	public void updateCommit() {
 		String dpTimeAfterChange = dpTimeField.getText();
 	    String arTimeAfterChange = arTimeField.getText();
+	    String flightStatusAfterChange = flightStatusField.getText();
 	    
 	    String flightStatus = flight.getDurum();
 	    if(flightStatus.equals("BEKLİYOR")) {
-	    	if(dpTimeAfterChange.equals(dpTimeBeforeChange) && arTimeAfterChange.equals(arTimeBeforeChange)) {
+	    	if(dpTimeAfterChange.equals(dpTimeBeforeChange) && arTimeAfterChange.equals(arTimeBeforeChange)
+	    			&& flightStatusAfterChange.equals(flightStatusBeforeChange)) {
 		    	JOptionPane.showMessageDialog(null, "Herhangi bir değişiklik yapmadınız");
 		    } else {
 		    	int choice = JOptionPane.showConfirmDialog(null, "Uçuşu saatleri değiştirilecek. Onaylıyor musunuz?");
 		    	if(choice == 0) {
-		    		boolean result = FlightOperations.updateFlight(flight, dpTimeAfterChange, arTimeAfterChange);
+		    		boolean result = FlightOperations.updateFlight(flight, dpTimeAfterChange, arTimeAfterChange, flightStatusAfterChange);
 		    		if(result) {
 		    			JOptionPane.showMessageDialog(null, "UÇUŞ GÜNCELLENDİ");
 		    			mainViewController.setFlightsTable();
@@ -118,13 +124,14 @@ public class InfoPageViewController implements Initializable {
 		    	}
 		    }
 	    } else {
-	    	JOptionPane.showMessageDialog(null, "Bu uçuşu erteleyemezsiniz");
+	    	JOptionPane.showMessageDialog(null, "Bu uçuşu güncelleyemezsiniz");
 	    }
 	}
 	
 	public void updateCancel() {
 		dpTimeField.setEditable(false); 
 		arTimeField.setEditable(false);
+		flightStatusField.setEditable(false);
 
 		updateFlightButton.setVisible(true);
 		cancelFlightButton.setVisible(true);

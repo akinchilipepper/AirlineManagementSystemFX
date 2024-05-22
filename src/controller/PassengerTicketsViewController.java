@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import model.Flight;
@@ -26,7 +27,7 @@ import model.Ticket;
 import operations.TicketOperations;
 
 public class PassengerTicketsViewController implements Initializable {
-	
+
 	@FXML private TableView<Ticket> ticketsTable;
 	@FXML private TableColumn<Ticket, String> flightNumberColumn;
 	@FXML private TableColumn<Ticket, String> dpColumn;
@@ -34,62 +35,73 @@ public class PassengerTicketsViewController implements Initializable {
 	@FXML private TableColumn<Ticket, String> seatColumn;
 	@FXML private TableColumn<Ticket, String> pnrNumberColumn;
 	@FXML private TableColumn<Ticket, Void> buttonColumn;
+	@FXML private TextField ticketSearchField;
 	
+	private Passenger passenger;
 	private Ticket[] tickets;
-	
+	private ObservableList<Ticket> ticketData;
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		tickets = new Ticket[0];
 		setTicketsTable();
 	}
-	
+
 	public void initalizeObjects(Passenger passenger) {
-		tickets = TicketOperations.getPassengerTickets(passenger);
+		this.passenger = passenger;
+		this.tickets = TicketOperations.getPassengerTickets(passenger);
+		setTicketsTable();
 	}
-	
+
 	public void setTicketsTable() {
-		if(tickets != null) {
-			ObservableList<Ticket> data = FXCollections.observableArrayList();
-			for(Ticket ticket : tickets) {
-				data.add(ticket);
-			}
-			flightNumberColumn.setCellValueFactory(cellData -> {
-				Flight flight = cellData.getValue().getFlight();
-				if (flight != null) {
-					return new SimpleStringProperty(flight.getUcusNo());
-				} else {
-					return new SimpleStringProperty("");
-				}
-			});
-			dpColumn.setCellValueFactory(cellData -> {
-				Flight flight = cellData.getValue().getFlight();
-				if (flight != null) {
-					return new SimpleStringProperty(flight.getKalkisyeri().toString());
-				} else {
-					return new SimpleStringProperty("");
-				}
-			});
-			arColumn.setCellValueFactory(cellData -> {
-				Flight flight = cellData.getValue().getFlight();
-				if (flight != null) {
-					return new SimpleStringProperty(flight.getVarisyeri().toString());
-				} else {
-					return new SimpleStringProperty("");
-				}
-			});
-			seatColumn.setCellValueFactory(cellData -> {
-				Seat seat = cellData.getValue().getSeat();
-				if (seat != null) {
-					return new SimpleStringProperty(seat.getKoltuknumarasi() + " / " + seat.getKoltukturu());
-				} else {
-					return new SimpleStringProperty("");
-				}
-			});
-			pnrNumberColumn.setCellValueFactory(new PropertyValueFactory<>("pnr"));
-			buttonColumn.setCellFactory(param -> new ButtonCell());
-			ticketsTable.setItems(data);
+		ticketData = FXCollections.observableArrayList();
+		for (Ticket ticket : tickets) {
+			ticketData.add(ticket);
 		}
+		flightNumberColumn.setCellValueFactory(cellData -> {
+			Flight flight = cellData.getValue().getFlight();
+			if (flight != null) {
+				return new SimpleStringProperty(flight.getUcusNo());
+			} else {
+				return new SimpleStringProperty("");
+			}
+		});
+		dpColumn.setCellValueFactory(cellData -> {
+			Flight flight = cellData.getValue().getFlight();
+			if (flight != null) {
+				return new SimpleStringProperty(flight.getKalkisYeri().getHavaalani());
+			} else {
+				return new SimpleStringProperty("");
+			}
+		});
+		arColumn.setCellValueFactory(cellData -> {
+			Flight flight = cellData.getValue().getFlight();
+			if (flight != null) {
+				return new SimpleStringProperty(flight.getVarisYeri().getHavaalani());
+			} else {
+				return new SimpleStringProperty("");
+			}
+		});
+		seatColumn.setCellValueFactory(cellData -> {
+			Seat seat = cellData.getValue().getSeat();
+			if (seat != null) {
+				return new SimpleStringProperty(seat.getKoltuknumarasi() + " / " + seat.getKoltukturu());
+			} else {
+				return new SimpleStringProperty("");
+			}
+		});
+		pnrNumberColumn.setCellValueFactory(new PropertyValueFactory<>("pnr"));
+		buttonColumn.setCellFactory(param -> new ButtonCell());
+		ticketsTable.setItems(ticketData);
 	}
 	
+	public void ticketSearch() {
+		String search = ticketSearchField.getText();
+		ObservableList<Ticket> list = TicketOperations.getSearchedTickets(passenger, search);
+		
+		ticketsTable.setItems(list);
+	}
+
 	class ButtonCell extends TableCell<Ticket, Void> {
 		private final JFXButton button;
 
@@ -100,10 +112,10 @@ public class PassengerTicketsViewController implements Initializable {
 			button.setOnAction(event -> {
 				try {
 					int choice = JOptionPane.showConfirmDialog(null, "Bu bileti silmek istediğinize emin misiniz");
-					if(choice == 0) {
+					if (choice == 0) {
 						int selectedRow = ticketsTable.getSelectionModel().getSelectedIndex();
 						boolean result = TicketOperations.deleteTicket(tickets[selectedRow]);
-						if(result) {
+						if (result) {
 							setTicketsTable();
 							JOptionPane.showMessageDialog(null, "Bilet başarıyla silindi");
 						} else {

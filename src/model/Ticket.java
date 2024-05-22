@@ -7,14 +7,16 @@ public class Ticket {
     private Passenger passenger;
     private Flight flight;
     private Seat seat;
+    private double ucret;
 
-    public Ticket(int id, String pnr, Passenger passenger, Flight flight, Seat seat) {
+    public Ticket(int id, String pnr, Passenger passenger, Flight flight, Seat seat, double ucret) {
         super();
         this.id = id;
         this.pnr = pnr;
         this.passenger = passenger;
         this.flight = flight;
         this.seat = seat;
+        this.ucret = ucret;
     }
     
     public Ticket() {
@@ -37,11 +39,11 @@ public class Ticket {
         this.pnr = pnr;
     }
 
-    public Passenger getUser() {
+    public Passenger getPassenger() {
         return passenger;
     }
 
-    public void setUser(Passenger passenger) {
+    public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
     }
 
@@ -60,5 +62,13 @@ public class Ticket {
     public void setSeat(Seat seat) {
         this.seat = seat;
     }
+
+	public double getUcret() {
+		return ucret;
+	}
+
+	public void setUcret(double ucret) {
+		this.ucret = ucret;
+	}  
 }
 

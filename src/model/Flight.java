@@ -4,8 +4,8 @@ public class Flight {
 
     int id;
     Plane ucak;
-    Airport kalkisyeri;
-    Airport varisyeri;
+    Airport kalkisYeri;
+    Airport varisYeri;
     String kalkisTarihi;
     String varisTarihi;
     String kalkisZamani;
@@ -14,13 +14,13 @@ public class Flight {
     String ucusNo;
     int biletFiyati;
 
-    public Flight(int id, Plane ucak, Airport kalkisyeri, Airport varisyeri, String kalkisTarihi,
+    public Flight(int id, Plane ucak, Airport kalkisYeri, Airport varisYeri, String kalkisTarihi,
             String varisTarihi, String kalkisZamani, String varisZamani, 
             String durum, String ucusNo, int biletFiyati) {
         this.id = id;
         this.ucak = ucak;
-        this.kalkisyeri = kalkisyeri;
-        this.varisyeri = varisyeri;
+        this.kalkisYeri = kalkisYeri;
+        this.varisYeri = varisYeri;
         this.kalkisTarihi = kalkisTarihi;
         this.varisTarihi = varisTarihi;
         this.kalkisZamani = kalkisZamani;
@@ -50,20 +50,20 @@ public class Flight {
         this.ucak = ucak;
     }
 
-    public Airport getKalkisyeri() {
-        return kalkisyeri;
+    public Airport getKalkisYeri() {
+        return kalkisYeri;
     }
 
-    public void setKalkisyeri(Airport kalkisyeri) {
-        this.kalkisyeri = kalkisyeri;
+    public void setKalkisyeri(Airport kalkisYeri) {
+        this.kalkisYeri = kalkisYeri;
     }
 
-    public Airport getVarisyeri() {
-        return varisyeri;
+    public Airport getVarisYeri() {
+        return varisYeri;
     }
 
-    public void setVarisyeri(Airport varisyeri) {
-        this.varisyeri = varisyeri;
+    public void setVarisyeri(Airport varisYeri) {
+        this.varisYeri = varisYeri;
     }
 
     public String getKalkisTarihi() {
