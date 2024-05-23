@@ -111,19 +111,19 @@ public class PassengerTicketsViewController implements Initializable {
 			button.setPrefWidth(120);
 			button.setOnAction(event -> {
 				try {
-					int choice = JOptionPane.showConfirmDialog(null, "Bu bileti silmek istediğinize emin misiniz");
+					int choice = JOptionPane.showConfirmDialog(null, "Bu bileti silmek istediğinize emin misiniz?", "Bilet İşlemleri", JOptionPane.YES_NO_OPTION);
 					if (choice == 0) {
-						int selectedRow = ticketsTable.getSelectionModel().getSelectedIndex();
-						boolean result = TicketOperations.deleteTicket(tickets[selectedRow]);
+						Ticket ticket = ticketsTable.getSelectionModel().getSelectedItem();
+						boolean result = TicketOperations.deleteTicket(ticket);
 						if (result) {
 							setTicketsTable();
-							JOptionPane.showMessageDialog(null, "Bilet başarıyla silindi");
+							JOptionPane.showMessageDialog(null, "Bilet başarıyla silindi", "Bilet İşlemleri", JOptionPane.INFORMATION_MESSAGE);
 						} else {
-							JOptionPane.showMessageDialog(null, "Bilet silinemedi");
+							JOptionPane.showMessageDialog(null, "Bilet silinemedi", "Hata", JOptionPane.ERROR_MESSAGE);
 						}
 					}
-				} catch (IndexOutOfBoundsException e) {
-					JOptionPane.showMessageDialog(null, "Lütfen bir satır seçin");
+				} catch (NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Lütfen bir satır seçin", "Hata", JOptionPane.ERROR_MESSAGE);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

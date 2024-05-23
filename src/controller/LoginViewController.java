@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -39,6 +42,7 @@ public class LoginViewController implements Initializable {
     @FXML private ImageView planeImgView;
     @FXML private ImageView flaaiImgView;
     @FXML private ImageView closeImgView;
+    @FXML private Image appIcon;
     @FXML private FontAwesomeIconView excIcon;
     private int deneme = 3;
     private double xOffset = 0;
@@ -46,11 +50,12 @@ public class LoginViewController implements Initializable {
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-    	Image flaaiImg = new Image("/images/flaai.png");
+    	appIcon = new Image("/media/appIconPlane.png");
+    	Image flaaiImg = new Image("/media/flaai.png");
     	flaaiImgView.setImage(flaaiImg);
-    	Image planeImg = new Image("/images/plane.gif");
+    	Image planeImg = new Image("/media/planeAnimation2.gif");
     	planeImgView.setImage(planeImg);
-    	Image closeImg = new Image("/images/blackcross.png");
+    	Image closeImg = new Image("/media/blackcross.png");
     	closeImgView.setImage(closeImg);
     	clock();
     }
@@ -98,10 +103,13 @@ public class LoginViewController implements Initializable {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.initStyle(StageStyle.UNDECORATED);
+                stage.getIcons().add(appIcon);
                 stage.show();
                 
                 mainPane.getScene().getWindow().hide();   
             }
+        } catch(NullPointerException e) {
+        	JOptionPane.showMessageDialog(null, "Sunucuya bağlanılamadı", "Hata", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
         }

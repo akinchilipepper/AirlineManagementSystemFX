@@ -56,7 +56,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" styleClass="UIIcon">
                      <image>
-                        <Image url="@../images/left-arrow.png" />
+                        <Image url="@../media/left-arrow.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -70,7 +70,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" styleClass="UIIcon">
                      <image>
-                        <Image url="@../Images/whitecross.png" />
+                        <Image url="@../media/whitecross.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -230,7 +230,7 @@
                            <children>
                               <ImageView fitHeight="88.0" fitWidth="85.0" layoutX="14.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/plane_icon.png" />
+                                    <Image url="@../media/plane_icon.png" />
                                  </image>
                               </ImageView>
                               <Label fx:id="flightCountLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="57.0" prefHeight="66.0" prefWidth="110.0" textFill="WHITE">
@@ -249,7 +249,7 @@
                            <children>
                               <ImageView fitHeight="88.0" fitWidth="85.0" layoutX="14.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/passenger.png" />
+                                    <Image url="@../media/passenger.png" />
                                  </image>
                               </ImageView>
                               <Label layoutX="137.0" layoutY="146.0" text="KULLANICILAR" textFill="WHITE">
@@ -268,7 +268,7 @@
                            <children>
                               <ImageView fitHeight="88.0" fitWidth="85.0" layoutX="14.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/turkish-lira.png" />
+                                    <Image url="@../media/turkish-lira.png" />
                                  </image>
                               </ImageView>
                               <Label layoutX="116.0" layoutY="146.0" text="TOPLAM KAZANÇ" textFill="WHITE">

@@ -25,12 +25,10 @@ public class AirportOperations {
                 + "H.ID, "
                 + "S.SEHIR, "
                 + "H.HAVAALANI, "
-                + "H.IATAKODU, "
-                + "K.KULLANIM "
+                + "H.IATAKODU "
                 + "FROM "
                 + "HAVAALANLARI H "
                 + "JOIN SEHIRLER S ON S.ID = H.SEHIRID "
-                + "JOIN HAVAALANIKULLANIM K ON K.ID = H.KULLANIMID "
                 + "ORDER BY ID";
         try {
             ArrayList<Airport> airportList = new ArrayList<>();

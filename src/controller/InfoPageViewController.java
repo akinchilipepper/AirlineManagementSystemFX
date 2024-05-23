@@ -71,16 +71,16 @@ public class InfoPageViewController implements Initializable {
 	
 	public void cancelFlight() {
 		int choice = JOptionPane.showConfirmDialog(null, "Uçuşu iptal etmek istediğinize emin misiniz?\n"
-				+ "Uçuşu iptal etmek yolcu biletlerinin iptal olmasına sebep olacaktır");
+				+ "Uçuşu iptal etmek yolcu biletlerinin iptal olmasına sebep olacaktır.", "Uçuş İptali", JOptionPane.WARNING_MESSAGE);
 		if(choice == 0) {
 			boolean result = FlightOperations.cancelFlight(flight);
 			if(result) {
 				mainViewController.setFlightsTable();
-				JOptionPane.showMessageDialog(null, "Uçuş iptal edildi");
+				JOptionPane.showMessageDialog(null, "Uçuş iptal edildi!", "Uçuş İptali", JOptionPane.INFORMATION_MESSAGE);
 				Stage stage = (Stage) cancelFlightButton.getScene().getWindow();
 		        stage.close();				
 			} else {
-				JOptionPane.showMessageDialog(null, "Uçuş iptal edilemedi");
+				JOptionPane.showMessageDialog(null, "Uçuş iptal edilemedi.", "Uçuş İptali", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}
@@ -111,20 +111,20 @@ public class InfoPageViewController implements Initializable {
 	    if(flightStatus.equals("BEKLİYOR")) {
 	    	if(dpTimeAfterChange.equals(dpTimeBeforeChange) && arTimeAfterChange.equals(arTimeBeforeChange)
 	    			&& flightStatusAfterChange.equals(flightStatusBeforeChange)) {
-		    	JOptionPane.showMessageDialog(null, "Herhangi bir değişiklik yapmadınız");
+		    	JOptionPane.showMessageDialog(null, "Herhangi bir değişiklik yapmadınız.", "Hata", JOptionPane.ERROR_MESSAGE);
 		    } else {
-		    	int choice = JOptionPane.showConfirmDialog(null, "Uçuşu saatleri değiştirilecek. Onaylıyor musunuz?");
+		    	int choice = JOptionPane.showConfirmDialog(null, "Uçuşu saatleri değiştirilecek. Onaylıyor musunuz?", "Uçuş Düzenleme", JOptionPane.QUESTION_MESSAGE);
 		    	if(choice == 0) {
 		    		boolean result = FlightOperations.updateFlight(flight, dpTimeAfterChange, arTimeAfterChange, flightStatusAfterChange);
 		    		if(result) {
-		    			JOptionPane.showMessageDialog(null, "UÇUŞ GÜNCELLENDİ");
+		    			JOptionPane.showMessageDialog(null, "Uçuş güncellendi!", "Uçuş Düzenleme", JOptionPane.INFORMATION_MESSAGE);
 		    			mainViewController.setFlightsTable();
 		    			updateCancel();
 		    		}
 		    	}
 		    }
 	    } else {
-	    	JOptionPane.showMessageDialog(null, "Bu uçuşu güncelleyemezsiniz");
+	    	JOptionPane.showMessageDialog(null, "Bu uçuşu güncelleyemezsiniz!");
 	    }
 	}
 	

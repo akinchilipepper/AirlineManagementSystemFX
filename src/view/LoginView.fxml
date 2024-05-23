@@ -19,7 +19,7 @@
             <Label layoutX="146.0" layoutY="567.0" prefHeight="18.0" prefWidth="207.0" text="Copyright © 2024 Tüm Hakları Saklıdır" textFill="WHITE" />
             <ImageView fx:id="planeImgView" fitHeight="414.0" fitWidth="414.0" layoutX="43.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/plane.png" />
+                  <Image url="@../media/plane.png" />
                </image>
             </ImageView>
          </children></AnchorPane>
@@ -49,13 +49,13 @@
                <graphic>
                   <ImageView fx:id="closeImgView" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="UIIcon">
                      <image>
-                        <Image url="@../Images/blackcross.png" />
+                        <Image url="@../media/blackcross.png" />
                      </image></ImageView>
                </graphic>
             </Button>
             <ImageView fx:id="flaaiImgView" fitHeight="359.0" fitWidth="370.0" layoutX="65.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/flaai.png" />
+                  <Image url="@../media/flaai.png" />
                </image>
             </ImageView>
          </children></AnchorPane>

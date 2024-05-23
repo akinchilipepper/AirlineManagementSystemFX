@@ -32,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -113,9 +114,11 @@ public class MainViewController implements Initializable {
 	
 	private ObservableList<Flight> flightData;
 	private ObservableList<Passenger> passengerData;
+	private Image image;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		image = new Image("/media/appIconPlane.png");
 		setAllBoxItems();
 		setFlightsTable();
 		setPassengersTable();
@@ -230,7 +233,7 @@ public class MainViewController implements Initializable {
 	
 	public void addFlight() {
 		if (areFieldsAreEmpty()) {
-			JOptionPane.showMessageDialog(null, "LÜTFEN TÜM ALANLARI DOLDURUN");
+			JOptionPane.showMessageDialog(null, "Lütfen tüm alanları doldurun.", "Uçuş Ekleme", JOptionPane.ERROR_MESSAGE);
 		} else {
 			String departureAirport = originBox.getValue();
 			String arrivalAirport = arrivalBox.getValue();
@@ -247,9 +250,9 @@ public class MainViewController implements Initializable {
 					arrivalDate, departureTime, arrivalTime, plane, flightStatus, flightNumber, ticketPrice);
 
 			if (isFlightAdded == 1) {
-				JOptionPane.showMessageDialog(null, "UÇUŞ EKLENEMEDİ!");
+				JOptionPane.showMessageDialog(null, "Uçuş eklenemedi!", "Hata", JOptionPane.ERROR_MESSAGE);
 			} else if(isFlightAdded == 2) {
-				JOptionPane.showMessageDialog(null, "LÜTFEN BENZERSİZ BİR UÇUŞ NUMARASI GİRİN");
+				JOptionPane.showMessageDialog(null, "Lütfen benzersiz bir uçuş numarası girin", "Hata", JOptionPane.ERROR_MESSAGE);
 			}
 
 			setFlightsTable();
@@ -327,6 +330,7 @@ public class MainViewController implements Initializable {
 	        Stage newStage = new Stage();
 	        newStage.setScene(scene);
 	        newStage.initStyle(StageStyle.UNDECORATED);
+	        newStage.getIcons().add(image);
 	        newStage.show();
 	    } catch (IOException e) {
 	        e.printStackTrace();
@@ -389,10 +393,12 @@ public class MainViewController implements Initializable {
 					Scene scene = new Scene(root);
 					Stage stage = new Stage();
 					stage.setScene(scene);
+					stage.setTitle("Uçuş Detayları");
 					stage.setResizable(false);
+					stage.getIcons().add(image);
 					stage.show();
 				} catch (NullPointerException e) {
-					JOptionPane.showMessageDialog(null, "Lütfen bir satır seçin");
+					JOptionPane.showMessageDialog(null, "Lütfen bir satır seçin!", "Hata", JOptionPane.ERROR_MESSAGE);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -429,9 +435,11 @@ public class MainViewController implements Initializable {
 					Scene scene = new Scene(root);
 					Stage stage = new Stage();
 					stage.setScene(scene);
+					stage.setTitle("Biletler");
 					stage.setResizable(false);
+					stage.getIcons().add(image);
 					stage.show();
-				} catch (IndexOutOfBoundsException e) {
+				} catch (NullPointerException e) {
 					JOptionPane.showMessageDialog(null, "Lütfen bir satır seçin");
 				} catch (Exception e) {
 					e.printStackTrace();
