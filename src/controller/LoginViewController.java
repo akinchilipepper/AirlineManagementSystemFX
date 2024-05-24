@@ -53,7 +53,7 @@ public class LoginViewController implements Initializable {
     	appIcon = new Image("/media/appIconPlane.png");
     	Image flaaiImg = new Image("/media/flaai.png");
     	flaaiImgView.setImage(flaaiImg);
-    	Image planeImg = new Image("/media/planeAnimation2.gif");
+    	Image planeImg = new Image("/media/planeAnimation.gif");
     	planeImgView.setImage(planeImg);
     	Image closeImg = new Image("/media/blackcross.png");
     	closeImgView.setImage(closeImg);
