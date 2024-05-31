@@ -21,3 +21,7 @@
 .UIButton:hover .UIIcon {
     -fx-opacity: 0.50;
 }
+.designerInfoLabel:hover {
+	-fx-underline: true;
+	-fx-cursor: hand;
+}

@@ -58,6 +58,7 @@
                   <Image url="@../media/flaai.png" />
                </image>
             </ImageView>
+            <Label layoutX="224.0" layoutY="568.0" onMouseClicked="#showDesignerInfoView" styleClass="designerInfoLabel" stylesheets="@LoginDesign.css" text="Tasarımcı" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

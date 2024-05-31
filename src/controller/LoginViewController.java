@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -124,6 +125,19 @@ public class LoginViewController implements Initializable {
     public void onCloseButtonClicked() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+    
+    public void showDesignerInfoView() {
+    	Stage stage = new Stage();
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/view/DesignerInfoView.fxml"));
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.getIcons().add(appIcon);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     public void error() {
