@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="140.0" layoutY="34.0" text="Adı: Muhammed Musa" />
-      <Label layoutX="167.0" layoutY="72.0" text="Soyadı: Akın" />
-      <Label layoutX="146.0" layoutY="111.0" text="Numarası: 22612014" />
-      <Label layoutX="115.0" layoutY="147.0" text="Bölümü: Bilgisayar Programcılığı" />
+      <Label alignment="CENTER_RIGHT" layoutX="26.0" layoutY="51.0" prefHeight="18.0" prefWidth="50.0" text="Adı:" />
+      <Label alignment="CENTER_RIGHT" layoutX="26.0" layoutY="71.0" prefWidth="50.0" text="Soyadı:" />
+      <Label alignment="CENTER_RIGHT" layoutX="26.0" layoutY="91.0" prefWidth="50.0" text="Bölümü:" />
+      <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="111.0" prefHeight="18.0" prefWidth="62.0" text="Numarası:" />
+      <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="131.0" prefHeight="18.0" prefWidth="62.0" text="e-Postası:" />
+      <Label layoutX="85.0" layoutY="51.0" text="Muhammed Musa" />
+      <Label layoutX="86.0" layoutY="70.0" prefHeight="18.0" prefWidth="35.0" text="Akın" />
+      <Label layoutX="86.0" layoutY="91.0" text="Bilgisayar Programcılığı" />
+      <Label layoutX="87.0" layoutY="131.0" text="musaakin890@gmail.com" />
+      <Label layoutX="87.0" layoutY="111.0" text="22612014" />
+      <ImageView fitHeight="128.0" fitWidth="123.0" layoutX="253.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../media/student.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
