@@ -29,11 +29,7 @@ public class Flight {
         this.ucusNo = ucusNo;
         this.biletFiyati = biletFiyati;
     }
-
-    public Flight() {
-
-    }
-
+    
     public int getId() {
         return id;
     }

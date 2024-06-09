@@ -113,14 +113,20 @@ public class InfoPageViewController implements Initializable {
 	    			&& flightStatusAfterChange.equals(flightStatusBeforeChange)) {
 		    	JOptionPane.showMessageDialog(null, "Herhangi bir değişiklik yapmadınız.", "Hata", JOptionPane.ERROR_MESSAGE);
 		    } else {
-		    	int choice = JOptionPane.showConfirmDialog(null, "Uçuşu saatleri değiştirilecek. Onaylıyor musunuz?", "Uçuş Düzenleme", JOptionPane.QUESTION_MESSAGE);
+		    	int choice = JOptionPane.showConfirmDialog(null, "Uçuşu saatleri değiştirilecek. Onaylıyor musunuz?", "Uçuş Düzenleme", JOptionPane.YES_NO_OPTION);
 		    	if(choice == 0) {
-		    		boolean result = FlightOperations.updateFlight(flight, dpTimeAfterChange, arTimeAfterChange, flightStatusAfterChange);
-		    		if(result) {
+		    		int result = FlightOperations.updateFlight(flight, dpTimeAfterChange, arTimeAfterChange, flightStatusAfterChange);
+		    		if(result == 0) {
 		    			JOptionPane.showMessageDialog(null, "Uçuş güncellendi!", "Uçuş Düzenleme", JOptionPane.INFORMATION_MESSAGE);
 		    			mainViewController.setFlightsTable();
 		    			updateCancel();
-		    		}
+		    		} else if (result == 1) {
+		    			JOptionPane.showMessageDialog(null, "Uçuş güncellenemedi!", "Hata", JOptionPane.ERROR_MESSAGE);
+		    			updateCancel();
+		    		} else if(result == 2) {
+		    			JOptionPane.showMessageDialog(null, "Lütfen bilgileri doğru formatta giriniz!", "Hata", JOptionPane.ERROR_MESSAGE);
+		    			updateCancel();
+		    		} 
 		    	}
 		    }
 	    } else {

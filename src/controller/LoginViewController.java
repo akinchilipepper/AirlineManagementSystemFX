@@ -7,7 +7,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import javax.swing.JOptionPane;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -109,8 +108,6 @@ public class LoginViewController implements Initializable {
                 
                 mainPane.getScene().getWindow().hide();   
             }
-        } catch(NullPointerException e) {
-        	JOptionPane.showMessageDialog(null, "Sunucuya bağlanılamadı", "Hata", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
         }

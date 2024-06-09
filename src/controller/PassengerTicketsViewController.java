@@ -38,23 +38,21 @@ public class PassengerTicketsViewController implements Initializable {
 	@FXML private TextField ticketSearchField;
 	
 	private Passenger passenger;
-	private Ticket[] tickets;
 	private ObservableList<Ticket> ticketData;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		tickets = new Ticket[0];
-		setTicketsTable();
+		
 	}
 
 	public void initalizeObjects(Passenger passenger) {
 		this.passenger = passenger;
-		this.tickets = TicketOperations.getPassengerTickets(passenger);
 		setTicketsTable();
 	}
 
 	public void setTicketsTable() {
 		ticketData = FXCollections.observableArrayList();
+		Ticket[] tickets = TicketOperations.getPassengerTickets(passenger);
 		for (Ticket ticket : tickets) {
 			ticketData.add(ticket);
 		}
@@ -116,8 +114,8 @@ public class PassengerTicketsViewController implements Initializable {
 						Ticket ticket = ticketsTable.getSelectionModel().getSelectedItem();
 						boolean result = TicketOperations.deleteTicket(ticket);
 						if (result) {
-							setTicketsTable();
 							JOptionPane.showMessageDialog(null, "Bilet başarıyla silindi", "Bilet İşlemleri", JOptionPane.INFORMATION_MESSAGE);
+							setTicketsTable();
 						} else {
 							JOptionPane.showMessageDialog(null, "Bilet silinemedi", "Hata", JOptionPane.ERROR_MESSAGE);
 						}

@@ -107,13 +107,13 @@
                         <Label layoutX="445.0" layoutY="157.0" text="UÇUŞ NO" />
                         <Label layoutX="15.0" layoutY="110.0" text="KALKIŞ ZAMANI" />
                         <DatePicker fx:id="departureDatePicker" layoutX="109.0" layoutY="65.0" prefHeight="26.0" prefWidth="180.0" />
-                        <TextField fx:id="departureTimeField" layoutX="110.0" layoutY="105.0" prefWidth="180.0" />
+                        <TextField fx:id="departureTimeField" layoutX="110.0" layoutY="105.0" prefWidth="180.0" promptText="SS:dd:ss" />
                         <ComboBox fx:id="arrivalBox" layoutX="416.0" layoutY="25.0" prefWidth="180.0" />
                         <Label layoutX="321.0" layoutY="30.0" text="VARIŞ YERİ" />
                         <Label layoutX="321.0" layoutY="70.0" text="VARIŞ TARİHİ" />
                         <Label layoutX="321.0" layoutY="110.0" text="VARIŞ ZAMANI" />
                         <DatePicker fx:id="arrivalDatePicker" layoutX="415.0" layoutY="65.0" prefHeight="26.0" prefWidth="180.0" />
-                        <TextField fx:id="arrivalTimeField" layoutX="416.0" layoutY="105.0" prefWidth="180.0" />
+                        <TextField fx:id="arrivalTimeField" layoutX="416.0" layoutY="105.0" prefWidth="180.0" promptText="SS:dd:ss" />
                         <TextField fx:id="ticketPriceField" layoutX="638.0" layoutY="75.0" />
                         <Label layoutX="680.0" layoutY="51.0" text="BİLET FİYATI" />
                      </children>

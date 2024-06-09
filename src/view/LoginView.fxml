@@ -18,9 +18,6 @@
          <children>
             <Label layoutX="146.0" layoutY="567.0" prefHeight="18.0" prefWidth="207.0" text="Copyright © 2024 Tüm Hakları Saklıdır" textFill="WHITE" />
             <ImageView fx:id="planeImgView" fitHeight="414.0" fitWidth="414.0" layoutX="43.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../media/plane.png" />
-               </image>
             </ImageView>
          </children></AnchorPane>
       <AnchorPane layoutX="500.0" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;">

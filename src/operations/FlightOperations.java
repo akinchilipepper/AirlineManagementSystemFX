@@ -69,6 +69,11 @@ public class FlightOperations {
             
         } catch (SQLException ex) {
         	if ("1062".equals(ex.getSQLState()) || "23000".equals(ex.getSQLState())) {
+                return 3;
+            } else if ("22001".equals(ex.getSQLState()) || "22003".equals(ex.getSQLState())
+            		|| "2207".equals(ex.getSQLState()) || "22018".equals(ex.getSQLState())) {
+                return 2;
+            } else if (ex.getErrorCode() == 1265) {
                 return 2;
             } else {
             	Logger.getLogger(FlightOperations.class.getName()).log(Level.SEVERE, null, ex);
@@ -230,9 +235,9 @@ public class FlightOperations {
     	}	
 	}
 	
-	public static boolean updateFlight(Flight flight, String dpTime, String arTime, String durum) {
+	public static int updateFlight(Flight flight, String dpTime, String arTime, String durum) {
 		String query = "UPDATE UCUSLAR SET KALKISZAMANI = ?, VARISZAMANI = ?, "
-				+ "DURUMID = SELECT ID FROM DURUMLAR WHERE UCUSDURUMU = ? "
+				+ "DURUMID = (SELECT ID FROM DURUMLAR WHERE UCUSDURUMU = ?) "
 				+ "WHERE ID = ?";
 		try {
 			ps = con.prepareStatement(query);
@@ -242,10 +247,19 @@ public class FlightOperations {
 			ps.setInt(4, flight.getId());
 			int result = ps.executeUpdate();
 			
-			return result > 0;
+			if(result > 0) return 0;
+			else return 1;
 		} catch(SQLException ex) {
             Logger.getLogger(FlightOperations.class.getName()).log(Level.SEVERE, null, ex);
-    		return false;
+            if ("22001".equals(ex.getSQLState()) || "22003".equals(ex.getSQLState())
+            		|| "2207".equals(ex.getSQLState()) || "22018".equals(ex.getSQLState())) {
+                return 2;
+            } else if (ex.getErrorCode() == 1265) {
+                return 2;
+            } else {
+            	Logger.getLogger(FlightOperations.class.getName()).log(Level.SEVERE, null, ex);
+                return 1;
+            }
     	}
 	}
 	

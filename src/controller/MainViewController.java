@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -245,14 +246,29 @@ public class MainViewController implements Initializable {
 			String flightStatus = statusBox.getValue();
 			String flightNumber = flightNumberField.getText();
 			int ticketPrice = Integer.parseInt(ticketPriceField.getText());
+			
+			if(departureAirport.equals(arrivalAirport)) {
+				JOptionPane.showMessageDialog(null, "Varış ve kalkış yerleri aynı olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			Timestamp kalkisZamani = Timestamp.valueOf(departureDate + " " + departureTime);
+			Timestamp varisZamani = Timestamp.valueOf(arrivalDate + " " + arrivalTime);
+			
+			if (varisZamani.before(kalkisZamani)) {
+				JOptionPane.showMessageDialog(null, "Varış zamanı kalkış zamanından önce olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
+			    return;
+			}
 
 			int isFlightAdded = FlightOperations.addFlight(departureAirport, arrivalAirport, departureDate,
 					arrivalDate, departureTime, arrivalTime, plane, flightStatus, flightNumber, ticketPrice);
 
 			if (isFlightAdded == 1) {
 				JOptionPane.showMessageDialog(null, "Uçuş eklenemedi!", "Hata", JOptionPane.ERROR_MESSAGE);
-			} else if(isFlightAdded == 2) {
-				JOptionPane.showMessageDialog(null, "Lütfen benzersiz bir uçuş numarası girin", "Hata", JOptionPane.ERROR_MESSAGE);
+			} else if(isFlightAdded == 1){
+				JOptionPane.showMessageDialog(null, "Lütfen uçuş tarihlerini doğru formatta girin!", "Hata", JOptionPane.ERROR_MESSAGE);
+			} else if(isFlightAdded == 3) {
+				JOptionPane.showMessageDialog(null, "Lütfen benzersiz bir uçuş numarası girin!", "Hata", JOptionPane.ERROR_MESSAGE);
 			}
 
 			setFlightsTable();
@@ -344,6 +360,7 @@ public class MainViewController implements Initializable {
 			flightsPane.setVisible(false);
 			passengersPane.setVisible(false);
 			dashboardPane.setVisible(false);
+			setFlightsTable();
 		} else if (event.getSource() == flightsButton) {
 			flightManagementPane.setVisible(false);
 			flightsPane.setVisible(true);
