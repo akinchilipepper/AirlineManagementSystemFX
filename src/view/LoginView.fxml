@@ -16,9 +16,9 @@
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: BLACK;">
          <children>
-            <Label layoutX="146.0" layoutY="567.0" prefHeight="18.0" prefWidth="207.0" text="Copyright © 2024 Tüm Hakları Saklıdır" textFill="WHITE" />
             <ImageView fx:id="planeImgView" fitHeight="414.0" fitWidth="414.0" layoutX="43.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
             </ImageView>
+            <Label layoutX="146.0" layoutY="567.0" prefHeight="18.0" prefWidth="207.0" text="Copyright © 2024 Tüm Hakları Saklıdır" textFill="WHITE" />
          </children></AnchorPane>
       <AnchorPane layoutX="500.0" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;">
          <children>
@@ -55,7 +55,7 @@
                   <Image url="@../media/flaai.png" />
                </image>
             </ImageView>
-            <Label layoutX="224.0" layoutY="568.0" onMouseClicked="#showDesignerInfoView" styleClass="designerInfoLabel" stylesheets="@LoginDesign.css" text="Tasarımcı" />
+            <Label layoutX="225.0" layoutY="568.0" onMouseClicked="#showDesignerInfoView" styleClass="designerInfoLabel" stylesheets="@LoginDesign.css" text="Tasarımcı" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

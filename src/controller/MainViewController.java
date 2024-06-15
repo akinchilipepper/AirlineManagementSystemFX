@@ -266,7 +266,7 @@ public class MainViewController implements Initializable {
 			if (isFlightAdded == 1) {
 				JOptionPane.showMessageDialog(null, "Uçuş eklenemedi!", "Hata", JOptionPane.ERROR_MESSAGE);
 			} else if(isFlightAdded == 1){
-				JOptionPane.showMessageDialog(null, "Lütfen uçuş tarihlerini doğru formatta girin!", "Hata", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Lütfen bilgileri doğru formatta girin!", "Hata", JOptionPane.ERROR_MESSAGE);
 			} else if(isFlightAdded == 3) {
 				JOptionPane.showMessageDialog(null, "Lütfen benzersiz bir uçuş numarası girin!", "Hata", JOptionPane.ERROR_MESSAGE);
 			}
