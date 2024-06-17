@@ -47,7 +47,7 @@ import operations.PassengerOperations;
 import operations.PlaneOperations;
 import operations.TicketOperations;
 
-public class MainViewController implements Initializable {
+public class MainPaneViewController implements Initializable {
 
 	@FXML private ComboBox<String> arrivalBox;
 	@FXML private ComboBox<String> planeBox;
@@ -340,7 +340,7 @@ public class MainViewController implements Initializable {
 	    currentStage.close();
 	    
 	    try {
-	        Parent root = FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"));
+	        Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPaneView.fxml"));
 	        Scene scene = new Scene(root);
 	        
 	        Stage newStage = new Stage();
@@ -402,10 +402,10 @@ public class MainViewController implements Initializable {
 					Flight flight = flightManagementTable.getSelectionModel().getSelectedItem();
 					int passengerCount = PassengerOperations.getPassengersCount(flight);
 
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/InfoPageView.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FlightInfoPaneView.fxml"));
 					Parent root = loader.load();
-					InfoPageViewController controller = loader.getController();
-					controller.initializeObjects(flight, passengerCount, MainViewController.this);
+					FlightInfoPaneViewController controller = loader.getController();
+					controller.initializeObjects(flight, passengerCount, MainPaneViewController.this);
 
 					Scene scene = new Scene(root);
 					Stage stage = new Stage();
@@ -444,9 +444,9 @@ public class MainViewController implements Initializable {
 				try {
 					Passenger passenger = passengersTable.getSelectionModel().getSelectedItem();
 
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PassengerTicketsView.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PassengerTicketsPaneView.fxml"));
 					Parent root = loader.load();
-					PassengerTicketsViewController controller = loader.getController();
+					PassengerTicketsPaneViewController controller = loader.getController();
 					controller.initalizeObjects(passenger);
 
 					Scene scene = new Scene(root);

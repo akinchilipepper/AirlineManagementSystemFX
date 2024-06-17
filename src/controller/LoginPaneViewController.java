@@ -29,7 +29,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class LoginViewController implements Initializable {
+public class LoginPaneViewController implements Initializable {
 	@FXML private AnchorPane mainPane;
 	@FXML private JFXButton confirmButton;
     @FXML private JFXTextField txtUsername;
@@ -90,7 +90,7 @@ public class LoginViewController implements Initializable {
                 error();
         	}else if (txtUsername.getText().equals("admin") && txtPassword.getText().equals("admin")) {
         		Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/view/MainPaneView.fxml"));
                 AnchorPane topBar = (AnchorPane) root.lookup("#topBar");
                 topBar.setOnMousePressed(event -> {
                     xOffset = event.getSceneX();
@@ -127,7 +127,7 @@ public class LoginViewController implements Initializable {
     public void showDesignerInfoView() {
     	Stage stage = new Stage();
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/view/DesignerInfoView.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/DesignerInfoPaneView.fxml"));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.getIcons().add(appIcon);

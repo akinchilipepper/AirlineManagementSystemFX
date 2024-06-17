@@ -14,7 +14,7 @@ public class Main extends Application {
 	public void start(Stage stage) {
 		try {
 			Image image = new Image("/media/appIconPlane.png");
-			Parent root = FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPaneView.fxml"));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.initStyle(StageStyle.UNDECORATED);

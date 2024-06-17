@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import model.Flight;
 import operations.FlightOperations;
 
-public class InfoPageViewController implements Initializable {
+public class FlightInfoPaneViewController implements Initializable {
 	
 	@FXML private TextField arAirportField;
     @FXML private TextField arDateField;
@@ -38,7 +38,7 @@ public class InfoPageViewController implements Initializable {
     @FXML private Button updateCancelButton;
     @FXML private TableView<Flight> flightsTable;
     private Flight flight;
-    private MainViewController mainViewController;
+    private MainPaneViewController mainPaneViewController;
     private String dpTimeBeforeChange;
     private String arTimeBeforeChange;
     private String flightStatusBeforeChange;
@@ -48,9 +48,9 @@ public class InfoPageViewController implements Initializable {
 		
 	}
 
-    public void initializeObjects(Flight flight, int passengerCount, MainViewController mainViewController) {
+    public void initializeObjects(Flight flight, int passengerCount, MainPaneViewController mainPaneViewController) {
         this.flight = flight;
-        this.mainViewController = mainViewController;
+        this.mainPaneViewController = mainPaneViewController;
         
         planeModelField.setText(flight.getUcak().getModel());
 		passengerCountField.setText(String.valueOf(flight.getUcak().getKapasite()) + "/" + passengerCount);
@@ -75,7 +75,7 @@ public class InfoPageViewController implements Initializable {
 		if(choice == 0) {
 			boolean result = FlightOperations.cancelFlight(flight);
 			if(result) {
-				mainViewController.setFlightsTable();
+				mainPaneViewController.setFlightsTable();
 				JOptionPane.showMessageDialog(null, "Uçuş iptal edildi!", "Uçuş İptali", JOptionPane.INFORMATION_MESSAGE);
 				Stage stage = (Stage) cancelFlightButton.getScene().getWindow();
 		        stage.close();				
@@ -118,7 +118,7 @@ public class InfoPageViewController implements Initializable {
 		    		int result = FlightOperations.updateFlight(flight, dpTimeAfterChange, arTimeAfterChange, flightStatusAfterChange);
 		    		if(result == 0) {
 		    			JOptionPane.showMessageDialog(null, "Uçuş güncellendi!", "Uçuş Düzenleme", JOptionPane.INFORMATION_MESSAGE);
-		    			mainViewController.setFlightsTable();
+		    			mainPaneViewController.setFlightsTable();
 		    			updateCancel();
 		    		} else if (result == 1) {
 		    			JOptionPane.showMessageDialog(null, "Uçuş güncellenemedi!", "Hata", JOptionPane.ERROR_MESSAGE);

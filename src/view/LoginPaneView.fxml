@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginViewController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPaneViewController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: BLACK;">
          <children>
-            <ImageView fx:id="planeImgView" fitHeight="414.0" fitWidth="414.0" layoutX="43.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="planeImgView" fitHeight="400.0" fitWidth="400.0" layoutX="50.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
             </ImageView>
             <Label layoutX="146.0" layoutY="567.0" prefHeight="18.0" prefWidth="207.0" text="Copyright © 2024 Tüm Hakları Saklıdır" textFill="WHITE" />
          </children></AnchorPane>
@@ -24,7 +24,7 @@
          <children>
             <JFXTextField fx:id="txtUsername" focusColor="#262626" layoutX="65.0" layoutY="271.0" onMouseClicked="#onFieldClicked" prefHeight="26.0" prefWidth="370.0" promptText="Kullanıcı Adı" />
             <JFXPasswordField fx:id="txtPassword" focusColor="#262626" layoutX="65.0" layoutY="325.0" onMouseClicked="#onFieldClicked" prefHeight="26.0" prefWidth="370.0" promptText="Parola" />
-            <JFXButton fx:id="confirmButton" alignment="CENTER" buttonType="RAISED" defaultButton="true" layoutX="129.0" layoutY="443.0" onAction="#onConfirmButtonAction" prefHeight="54.0" prefWidth="241.0" style="-fx-background-color: #2d2d2d;" styleClass="confirmButton" stylesheets="@LoginDesign.css" text="GİRİŞ" textFill="WHITE">
+            <JFXButton fx:id="confirmButton" alignment="CENTER" buttonType="RAISED" defaultButton="true" layoutX="129.0" layoutY="443.0" onAction="#onConfirmButtonAction" prefHeight="54.0" prefWidth="241.0" style="-fx-background-color: #2d2d2d;" styleClass="confirmButton" stylesheets="@styles.css" text="GİRİŞ" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -42,7 +42,7 @@
                   <Font name="System Bold" size="12.0" />
                </font></Label>
             <Label fx:id="timeLabel" alignment="CENTER_RIGHT" layoutX="321.0" layoutY="210.0" prefHeight="18.0" prefWidth="114.0" textFill="#2d2d2d" />
-            <Button fx:id="closeButton" cancelButton="true" layoutX="456.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#onCloseButtonClicked" prefHeight="30.0" prefWidth="30.0" styleClass="UIButton" stylesheets="@LoginDesign.css" textFill="WHITE">
+            <Button fx:id="closeButton" cancelButton="true" layoutX="456.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#onCloseButtonClicked" prefHeight="30.0" prefWidth="30.0" styleClass="UIButton" stylesheets="@styles.css" textFill="WHITE">
                <graphic>
                   <ImageView fx:id="closeImgView" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="UIIcon">
                      <image>
@@ -55,7 +55,7 @@
                   <Image url="@../media/flaai.png" />
                </image>
             </ImageView>
-            <Label layoutX="225.0" layoutY="568.0" onMouseClicked="#showDesignerInfoView" styleClass="designerInfoLabel" stylesheets="@LoginDesign.css" text="Tasarımcı" />
+            <Label layoutX="225.0" layoutY="568.0" onMouseClicked="#showDesignerInfoView" styleClass="designerInfoLabel" stylesheets="@styles.css" text="Tasarımcı" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

@@ -26,7 +26,7 @@ import model.Ticket;
 
 import operations.TicketOperations;
 
-public class PassengerTicketsViewController implements Initializable {
+public class PassengerTicketsPaneViewController implements Initializable {
 
 	@FXML private TableView<Ticket> ticketsTable;
 	@FXML private TableColumn<Ticket, String> flightNumberColumn;

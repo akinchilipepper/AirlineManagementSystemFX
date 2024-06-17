@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
@@ -21,28 +22,28 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
+<BorderPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPaneViewController">
    <left>
-      <AnchorPane prefHeight="565.0" prefWidth="375.0" styleClass="backgroundColor" stylesheets="@MainView.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="565.0" prefWidth="375.0" styleClass="backgroundColor" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
             <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="152.0" layoutY="147.0" size="100" />
-            <Button fx:id="flightManagementButton" layoutX="88.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="UÇUŞ YÖNETİMİ" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="flightManagementButton" layoutX="88.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@styles.css" text="UÇUŞ YÖNETİMİ" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Line endX="144.20001220703125" endY="1.52587890625E-5" layoutX="165.0" layoutY="218.0" startX="-100.0" />
-            <Button fx:id="flightsButton" layoutX="88.0" layoutY="358.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="UÇUŞLAR" textFill="WHITE">
+            <Button fx:id="flightsButton" layoutX="88.0" layoutY="358.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@styles.css" text="UÇUŞLAR" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="passengersButton" layoutX="88.0" layoutY="408.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="YOLCU İŞLEMLERİ" textFill="WHITE">
+            <Button fx:id="passengersButton" layoutX="88.0" layoutY="408.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@styles.css" text="YOLCU İŞLEMLERİ" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="dashboardButton" layoutX="88.0" layoutY="458.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@MainView.css" text="DASHBOARD" textFill="WHITE">
+            <Button fx:id="dashboardButton" layoutX="88.0" layoutY="458.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="200.0" styleClass="navbutton" stylesheets="@styles.css" text="DASHBOARD" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -52,7 +53,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="logoutButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="33.0" styleClass="UIButton" stylesheets="@MainView.css">
+            <Button fx:id="logoutButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="33.0" styleClass="UIButton" stylesheets="@styles.css">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" styleClass="UIIcon">
                      <image>
@@ -66,7 +67,7 @@
    <top>
       <AnchorPane fx:id="topBar" prefHeight="35.0" prefWidth="1000.0" style="-fx-background-color: #262626;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="closeButton" layoutX="1160.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#onCloseButtonClicked" styleClass="UIButton" stylesheets="@MainView.css">
+            <Button fx:id="closeButton" layoutX="1160.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#onCloseButtonClicked" styleClass="UIButton" stylesheets="@styles.css">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" styleClass="UIIcon">
                      <image>
@@ -75,7 +76,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label layoutX="531.0" layoutY="9.0" styleClass="title" stylesheets="@MainView.css" text="Havayolu Yönetim Sistemi" textFill="WHITE" />
+            <Label layoutX="531.0" layoutY="9.0" styleClass="title" stylesheets="@styles.css" text="Havayolu Yönetim Sistemi" textFill="WHITE" />
          </children>
       </AnchorPane>
    </top>
@@ -84,7 +85,7 @@
          <children>
             <AnchorPane fx:id="flightManagementPane" prefHeight="615.2" prefWidth="724.8" AnchorPane.bottomAnchor="0.7999999999999545" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane layoutX="11.0" layoutY="14.0" prefHeight="226.0" prefWidth="801.0" stylesheets="@MainView.css">
+                  <AnchorPane layoutX="11.0" layoutY="14.0" prefHeight="226.0" prefWidth="801.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -107,24 +108,24 @@
                         <Label layoutX="445.0" layoutY="157.0" text="UÇUŞ NO" />
                         <Label layoutX="15.0" layoutY="110.0" text="KALKIŞ ZAMANI" />
                         <DatePicker fx:id="departureDatePicker" layoutX="109.0" layoutY="65.0" prefHeight="26.0" prefWidth="180.0" />
-                        <TextField fx:id="departureTimeField" layoutX="110.0" layoutY="105.0" prefWidth="180.0" promptText="SS:dd:ss" />
+                        <TextField fx:id="departureTimeField" layoutX="110.0" layoutY="105.0" prefWidth="180.0" promptText="HH:MM:SS" />
                         <ComboBox fx:id="arrivalBox" layoutX="416.0" layoutY="25.0" prefWidth="180.0" />
                         <Label layoutX="321.0" layoutY="30.0" text="VARIŞ YERİ" />
                         <Label layoutX="321.0" layoutY="70.0" text="VARIŞ TARİHİ" />
                         <Label layoutX="321.0" layoutY="110.0" text="VARIŞ ZAMANI" />
                         <DatePicker fx:id="arrivalDatePicker" layoutX="415.0" layoutY="65.0" prefHeight="26.0" prefWidth="180.0" />
-                        <TextField fx:id="arrivalTimeField" layoutX="416.0" layoutY="105.0" prefWidth="180.0" promptText="SS:dd:ss" />
+                        <TextField fx:id="arrivalTimeField" layoutX="416.0" layoutY="105.0" prefWidth="180.0" promptText="HH:MM:SS" />
                         <TextField fx:id="ticketPriceField" layoutX="638.0" layoutY="75.0" />
                         <Label layoutX="680.0" layoutY="51.0" text="BİLET FİYATI" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="12.0" layoutY="248.0" prefHeight="358.0" prefWidth="800.0" stylesheets="@MainView.css">
+                  <AnchorPane layoutX="12.0" layoutY="248.0" prefHeight="358.0" prefWidth="800.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="flightManagementTable" layoutX="11.0" layoutY="55.0" prefHeight="295.0" prefWidth="778.0" stylesheets="@MainView.css">
+                        <TableView fx:id="flightManagementTable" layoutX="11.0" layoutY="55.0" prefHeight="295.0" prefWidth="778.0" stylesheets="@styles.css">
                           <columns>
                             <TableColumn fx:id="mDpColumn" editable="false" minWidth="7.20001220703125" prefWidth="150.0" resizable="false" sortable="false" text="KALKIŞ" />
                             <TableColumn fx:id="mArColumn" editable="false" minWidth="0.0" prefWidth="150.0" resizable="false" sortable="false" text="VARIŞ" />
@@ -149,13 +150,13 @@
                </children></AnchorPane>
             <AnchorPane fx:id="flightsPane" prefHeight="615.2" prefWidth="724.8" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane layoutX="8.0" layoutY="60.0" prefHeight="546.0" prefWidth="807.0" stylesheets="@MainView.css">
+                  <AnchorPane layoutX="8.0" layoutY="60.0" prefHeight="546.0" prefWidth="807.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="flightsTable" layoutX="10.0" layoutY="57.0" prefHeight="481.0" prefWidth="786.0">
+                        <TableView fx:id="flightsTable" layoutX="10.0" layoutY="57.0" prefHeight="481.0" prefWidth="786.0" stylesheets="@styles.css">
                            <columns>
                               <TableColumn fx:id="flightNumberColumn" editable="false" resizable="false" sortable="false" text="UÇUŞ NO" />
                               <TableColumn fx:id="dpColumn" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="KALKIŞ" />
@@ -182,13 +183,13 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="8.0" layoutY="60.0" prefHeight="546.0" prefWidth="807.0" stylesheets="@MainView.css">
+                  <AnchorPane layoutX="8.0" layoutY="60.0" prefHeight="546.0" prefWidth="807.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="passengersTable" layoutX="10.0" layoutY="57.0" prefHeight="481.0" prefWidth="786.0">
+                        <TableView fx:id="passengersTable" layoutX="10.0" layoutY="57.0" prefHeight="481.0" prefWidth="786.0" stylesheets="@styles.css">
                           <columns>
                             <TableColumn fx:id="nameColumn" prefWidth="170.0" text="AD" />
                             <TableColumn fx:id="surnameColumn" prefWidth="170.0" text="SOYAD" />
@@ -204,7 +205,7 @@
                </children></AnchorPane>
             <AnchorPane fx:id="dashboardPane" layoutX="122.0" layoutY="76.0" prefHeight="615.2" prefWidth="824.8" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane layoutX="12.0" layoutY="230.0" prefHeight="370.0" prefWidth="800.0" stylesheets="@MainView.css">
+                  <AnchorPane layoutX="12.0" layoutY="230.0" prefHeight="370.0" prefWidth="800.0" stylesheets="@styles.css">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -220,13 +221,13 @@
                         </AreaChart>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="12.0" layoutY="14.0" prefHeight="200.0" prefWidth="800.0" stylesheets="@MainView.css">
+                  <AnchorPane layoutX="12.0" layoutY="14.0" prefHeight="200.0" prefWidth="800.0">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="180.0" prefWidth="250.0" styleClass="nav-form" stylesheets="@MainView.css">
+                        <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="180.0" prefWidth="250.0" styleClass="nav-form" stylesheets="@styles.css">
                            <children>
                               <ImageView fitHeight="88.0" fitWidth="85.0" layoutX="14.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -245,7 +246,7 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="275.0" layoutY="10.0" prefHeight="180.0" prefWidth="250.0" styleClass="nav-form">
+                        <AnchorPane layoutX="275.0" layoutY="10.0" prefHeight="180.0" prefWidth="250.0" styleClass="nav-form" stylesheets="@styles.css">
                            <children>
                               <ImageView fitHeight="88.0" fitWidth="85.0" layoutX="14.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -264,7 +265,7 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="535.0" layoutY="10.0" prefHeight="180.0" prefWidth="250.0" styleClass="nav-form">
+                        <AnchorPane layoutX="535.0" layoutY="10.0" prefHeight="180.0" prefWidth="250.0" styleClass="nav-form" stylesheets="@styles.css">
                            <children>
                               <ImageView fitHeight="88.0" fitWidth="85.0" layoutX="14.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -284,6 +285,10 @@
                            </children>
                         </AnchorPane>
                      </children>
+                     <stylesheets>
+                        <URL value="@styles.css" />
+                        <URL value="@styles.css" />
+                     </stylesheets>
                   </AnchorPane>
                </children>
             </AnchorPane>

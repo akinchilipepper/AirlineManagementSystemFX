@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="page" stylesheets="@FlightInfoDesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoPageViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="page" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FlightInfoPaneViewController">
    <children>
       <Line endX="100.0" layoutX="248.0" layoutY="93.0" startX="-35.399993896484375" />
       <Label fx:id="departureAirportIATALabel" alignment="CENTER" contentDisplay="CENTER" layoutX="136.0" layoutY="75.0" prefHeight="35.0" prefWidth="60.0">
@@ -58,7 +58,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" stylesheets="@FlightInfoDesign.css">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" stylesheets="@styles.css">
                <children>
                   <Label text="KALKIŞ">
                      <font>
@@ -88,7 +88,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" stylesheets="@FlightInfoDesign.css" GridPane.rowIndex="1">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" stylesheets="@styles.css" GridPane.rowIndex="1">
                <children>
                   <Label text="VARIŞ">
                      <font>
@@ -118,7 +118,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" stylesheets="@FlightInfoDesign.css" GridPane.rowIndex="2">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" stylesheets="@styles.css" GridPane.rowIndex="2">
                <children>
                   <Label text="UÇUŞ">
                      <font>

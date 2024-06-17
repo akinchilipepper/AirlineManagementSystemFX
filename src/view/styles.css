@@ -54,3 +54,41 @@
 	-fx-background-insets: 0 0 0 0;
 	-fx-background-radius: 5px;
 }
+
+.vBox{
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-border-radius: 5px;
+}
+.page{
+	-fx-background-color: linear-gradient(to left bottom, #383838, #505050, #696969, #848383, #a09e9e, #b1afaf, #c2c0c0, #d4d2d2, #dfdddd, #e9e8e9, #f4f4f4, #ffffff);
+}
+
+.backgroundColor {
+    -fx-background-color: linear-gradient(#383838,#2d2d2d);
+}
+
+.UIButton {
+	-fx-background-color: transparent;
+}
+
+.UIButton:hover {
+	-fx-cursor: hand;
+}
+
+.confirmButton:hover {
+	-fx-cursor: hand;
+}
+
+.resetLabel:hover {
+	-fx-cursor: hand;
+}
+
+.UIButton:hover .UIIcon {
+    -fx-opacity: 0.50;
+}
+
+.designerInfoLabel:hover {
+	-fx-underline: true;
+	-fx-cursor: hand;
+}
