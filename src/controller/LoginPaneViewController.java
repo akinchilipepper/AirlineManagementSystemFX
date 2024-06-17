@@ -146,7 +146,9 @@ public class LoginPaneViewController implements Initializable {
         if(deneme == 0) {
         	mainPane.getScene().getWindow().hide();
         	Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Bilgilendirme");
+        	Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(this.getClass().getResource("/media/appIconPlane.png").toString()));
+            alert.setTitle("Hata");
             alert.setHeaderText(null);
             alert.setContentText("Deneme hakkınız kalmadı\nSistemden çıkılıyor...");
             alert.show();
