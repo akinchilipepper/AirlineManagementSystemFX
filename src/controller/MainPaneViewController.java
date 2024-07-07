@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
@@ -397,6 +398,7 @@ public class MainPaneViewController implements Initializable {
 			this.button = new JFXButton("Uçuş Bilgileri");
 			button.setStyle("-fx-background-color: black; -fx-background-radius: 0; -fx-text-fill: white;");
 			button.setPrefWidth(120);
+			button.setCursor(Cursor.HAND);
 			button.setOnAction(event -> {
 				try {
 					Flight flight = flightManagementTable.getSelectionModel().getSelectedItem();
@@ -440,6 +442,7 @@ public class MainPaneViewController implements Initializable {
 			this.button = new JFXButton("BİLETLER");
 			button.setStyle("-fx-background-color: black; -fx-background-radius: 0; -fx-text-fill: white;");
 			button.setPrefWidth(130);
+			button.setCursor(Cursor.HAND);
 			button.setOnAction(event -> {
 				try {
 					Passenger passenger = passengersTable.getSelectionModel().getSelectedItem();

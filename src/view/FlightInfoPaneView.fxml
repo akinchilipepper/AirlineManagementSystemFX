@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -151,9 +151,25 @@
          </children>
       </GridPane>
       <Line endX="100.0" layoutX="496.0" layoutY="93.0" startX="-35.399993896484375" />
-      <JFXButton fx:id="cancelFlightButton" layoutX="212.0" layoutY="459.0" onAction="#cancelFlight" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: RED;" text="UÇUŞU İPTAL ET" textFill="WHITE" />
-      <JFXButton fx:id="updateFlightButton" layoutX="418.0" layoutY="459.0" onAction="#updateFlight" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: BLUE;" text="UÇUŞU GÜNCELLE" textFill="WHITE" />
-      <Button fx:id="updateCommitButton" layoutX="212.0" layoutY="459.0" mnemonicParsing="false" onAction="#updateCommit" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: BLUE;" text="GÜNCELLE" visible="false" />
-      <Button fx:id="updateCancelButton" layoutX="418.0" layoutY="459.0" mnemonicParsing="false" onAction="#updateCancel" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: RED;" text="İPTAL ET" visible="false" />
+      <Button fx:id="cancelFlightButton" layoutX="212.0" layoutY="459.0" onAction="#cancelFlight" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: RED;" text="UÇUŞU İPTAL ET" textFill="WHITE">
+      		<cursor>
+           		<Cursor fx:constant="HAND" />
+      		</cursor>
+      </Button>
+      <Button fx:id="updateFlightButton" layoutX="418.0" layoutY="459.0" onAction="#updateFlight" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: BLUE;" text="UÇUŞU GÜNCELLE" textFill="WHITE">
+      		<cursor>
+           		<Cursor fx:constant="HAND" />
+      		</cursor>
+      </Button>
+      <Button fx:id="updateCommitButton" layoutX="212.0" layoutY="459.0" mnemonicParsing="false" onAction="#updateCommit" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: BLUE;" text="GÜNCELLE" visible="false">
+      		<cursor>
+           		<Cursor fx:constant="HAND" />
+      		</cursor>
+      </Button>
+      <Button fx:id="updateCancelButton" layoutX="418.0" layoutY="459.0" mnemonicParsing="false" onAction="#updateCancel" prefHeight="26.0" prefWidth="179.0" style="-fx-background-color: RED;" text="İPTAL ET" visible="false">
+      		<cursor>
+           		<Cursor fx:constant="HAND" />
+      		</cursor>
+      </Button>
    </children>
 </AnchorPane>

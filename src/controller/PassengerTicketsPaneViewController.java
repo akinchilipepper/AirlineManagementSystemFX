@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -107,6 +108,7 @@ public class PassengerTicketsPaneViewController implements Initializable {
 			this.button = new JFXButton("BİLETİ SİL");
 			button.setStyle("-fx-background-color: black; -fx-background-radius: 0; -fx-text-fill: white;");
 			button.setPrefWidth(120);
+			button.setCursor(Cursor.HAND);
 			button.setOnAction(event -> {
 				try {
 					int choice = JOptionPane.showConfirmDialog(null, "Bu bileti silmek istediğinize emin misiniz?", "Bilet İşlemleri", JOptionPane.YES_NO_OPTION);
