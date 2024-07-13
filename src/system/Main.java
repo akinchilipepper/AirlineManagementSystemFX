@@ -1,5 +1,8 @@
 package system;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +26,15 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		new Thread(() -> {
+			try {
+				FlightManagement.checkAndUpdateFlights();
+				Thread.sleep(60000);
+			} catch(InterruptedException ex) {
+				Logger.getLogger(Main.class.getName()).log(Level.SEVERE, ex, null);
+			}
+		}).start();
 	}
 	
 	public static void main(String[] args) {
